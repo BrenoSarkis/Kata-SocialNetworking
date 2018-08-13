@@ -52,21 +52,17 @@ namespace Kata.SocialNetworking.Tests
             return clientProcess.StandardOutput.ReadToEndAsync().Result;
         }
 
-
         void process_Exited(object sender, System.EventArgs e)
         {
-            // do something when process terminates;
         }
 
         void process_OutputDataReceived(object sender, DataReceivedEventArgs e)
         {
-            // a line is writen to the out stream. you can use it like:
             string s = e.Data;
         }
 
         void process_ErrorDataReceived(object sender, DataReceivedEventArgs e)
         {
-            // a line is writen to the out stream. you can use it like:
             string s = e.Data;
         }
     }
