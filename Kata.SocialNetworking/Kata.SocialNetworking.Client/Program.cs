@@ -6,7 +6,6 @@ namespace Kata.SocialNetworking.Client
     {
         public static void Main(string[] args)
         {
-            Console.Read();
         }
     }
 }
