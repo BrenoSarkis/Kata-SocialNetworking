@@ -12,24 +12,55 @@ namespace Kata.SocialNetworking.Tests
     [Binding]
     public class PostingSteps
     {
+        public UserController UserController { get; } = new UserController();
+
 
         [Given(@"I post the message ""(.*)""")]
         public void GivenIPostTheMessage(string message)
         {
-            ScenarioContext.Current.Pending();
+            UserController.PostMessage(message);
         }
 
         [When(@"I visit ""(.*)""'s wall")]
         public void WhenIVisitSWall(string userName)
         {
-            ScenarioContext.Current.Pending();
+            UserController.PrepareWallFor(userName);
         }
-
 
         [Then(@"I should see ""(.*)""")]
         public void ThenIShouldSee(string expectedMessage)
         {
-            ScenarioContext.Current.Pending();
+            Assert.That(UserController.ViewModel.Output.ToString(), Is.EqualTo(expectedMessage));
+        }
+    }
+
+    public class UserController
+    {
+        public Presenter Presenter { get; } = new Presenter();
+        public ViewModel ViewModel { get; } = new ViewModel();
+
+
+        public void PostMessage(string message)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PrepareWallFor(string userName)
+        {
+            ViewModel.Output.Append(Presenter.GetWallFor(userName));
+        }
+    }
+
+    public class ViewModel
+    {
+        public StringBuilder Output { get; set; }
+    }
+
+    public class Presenter
+    {
+        public string[] GetWallFor(string userName)
+        {
+            throw new NotImplementedException();
         }
     }
 }
