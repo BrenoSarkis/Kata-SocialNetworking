@@ -8,7 +8,6 @@ namespace Kata.SocialNetworking.UnitTests
         [Test]
         public void T()
         {
-
         }
     }
 }
