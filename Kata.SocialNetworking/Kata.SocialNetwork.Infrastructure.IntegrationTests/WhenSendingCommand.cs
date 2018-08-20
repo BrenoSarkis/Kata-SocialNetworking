@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using NSubstitute;
 using NUnit.Framework;
-using NUnit.Framework.Internal.Commands;
 
 namespace Kata.SocialNetwork.Infrastructure.IntegrationTests
 {
@@ -22,6 +20,23 @@ namespace Kata.SocialNetwork.Infrastructure.IntegrationTests
             bus.SendCommand(dummyCommand);
 
             commandHandlerMock.Received().Handle(Arg.Any<DummyCommand>());
+        }
+
+        [Test]
+        public void ThrowsWhenHandlerIsNotRegistered()
+        {
+            var commandWithoutHandler = new DummyCommand();
+            var bus = new Bus();
+            
+            Assert.That(() => bus.SendCommand(commandWithoutHandler), 
+                Throws.TypeOf<HandlerNotFoundException>().With.Message.EqualTo($"No handler found for command DummyCommand"));
+        }
+    }
+
+    public class HandlerNotFoundException : Exception
+    {
+        public HandlerNotFoundException(string commandName) : base($"No handler found for command {commandName}")
+        {
         }
     }
 
@@ -50,6 +65,11 @@ namespace Kata.SocialNetwork.Infrastructure.IntegrationTests
             {
                 handler.Invoke(command);
             }
+            else
+            {
+                throw new HandlerNotFoundException(typeof(TCommandType).Name);
+            }
+
         }
 
         public void RegisterCommandHandler<TCommandType>(IHandleCommandsOf<TCommandType> commandHandler) where TCommandType : Command
