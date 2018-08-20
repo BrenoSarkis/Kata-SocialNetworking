@@ -3,7 +3,7 @@ using Kata.SocialNetworking.Infrastructure.Exceptions;
 using NSubstitute;
 using NUnit.Framework;
 
-namespace Kata.SocialNetwork.Infrastructure.IntegrationTests
+namespace Kata.SocialNetwork.Infrastructure.UnitTests
 {
     [TestFixture]
     public class WhenSendingCommand

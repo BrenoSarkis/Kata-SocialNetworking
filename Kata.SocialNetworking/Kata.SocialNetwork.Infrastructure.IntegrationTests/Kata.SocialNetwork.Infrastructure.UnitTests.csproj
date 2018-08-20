@@ -8,8 +8,8 @@
     <ProjectGuid>{C4A666E6-52C7-4E20-8129-59C8F27090AF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Kata.SocialNetwork.Infrastructure.IntegrationTests</RootNamespace>
-    <AssemblyName>Kata.SocialNetwork.Infrastructure.IntegrationTests</AssemblyName>
+    <RootNamespace>Kata.SocialNetwork.Infrastructure.UnitTests</RootNamespace>
+    <AssemblyName>Kata.SocialNetwork.Infrastructure.UnitTests</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
