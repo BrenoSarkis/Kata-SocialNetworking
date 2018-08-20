@@ -8,11 +8,19 @@ namespace Kata.SocialNetwork.Infrastructure.IntegrationTests
     [TestFixture]
     public class WhenSendingCommand
     {
+        private Bus bus;
+        private DummyCommand dummyCommand;
+
+        [SetUp]
+        public void SetUp()
+        {
+            bus = new Bus();
+            dummyCommand = new DummyCommand();
+        }
+
         [Test]
         public void ItIsDeliveredToItsHandler()
         {
-            var dummyCommand = new DummyCommand();
-            var bus = new Bus();
             var commandHandlerMock = Substitute.For<IHandleCommandsOf<DummyCommand>>();
 
             bus.RegisterCommandHandler(commandHandlerMock);
@@ -25,11 +33,8 @@ namespace Kata.SocialNetwork.Infrastructure.IntegrationTests
         [Test]
         public void ThrowsWhenHandlerIsNotRegistered()
         {
-            var commandWithoutHandler = new DummyCommand();
-            var bus = new Bus();
-            
-            Assert.That(() => bus.SendCommand(commandWithoutHandler), 
-                Throws.TypeOf<HandlerNotFoundException>().With.Message.EqualTo($"No handler found for command DummyCommand"));
+            Assert.That(() => bus.SendCommand(dummyCommand), 
+                Throws.TypeOf<HandlerNotFoundException>().With.Message.EqualTo("No handler found for command DummyCommand"));
         }
     }
 
