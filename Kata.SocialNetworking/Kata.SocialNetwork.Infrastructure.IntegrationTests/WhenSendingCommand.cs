@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Kata.SocialNetworking.Infrastructure;
+using Kata.SocialNetworking.Infrastructure.Exceptions;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -33,48 +33,7 @@ namespace Kata.SocialNetwork.Infrastructure.IntegrationTests
         }
     }
 
-    public class HandlerNotFoundException : Exception
+    public class DummyCommand : ICommand
     {
-        public HandlerNotFoundException(string commandName) : base($"No handler found for command {commandName}")
-        {
-        }
-    }
-
-    public interface IHandleCommandsOf<TCommandType> where TCommandType : Command
-    {
-        void Handle(TCommandType command);
-    }
-
-    public class DummyCommand : Command
-    {
-    }
-
-    public class Command
-    {
-    }
-
-    public class Bus
-    {
-        private readonly Dictionary<Type, Action<Command>> commandHandlers = new Dictionary<Type, Action<Command>>();
-
-        public void SendCommand<TCommandType>(TCommandType command) where TCommandType : Command
-        {
-            Action<Command> handler;
-
-            if (commandHandlers.TryGetValue(typeof(TCommandType), out handler))
-            {
-                handler.Invoke(command);
-            }
-            else
-            {
-                throw new HandlerNotFoundException(typeof(TCommandType).Name);
-            }
-
-        }
-
-        public void RegisterCommandHandler<TCommandType>(IHandleCommandsOf<TCommandType> commandHandler) where TCommandType : Command
-        {
-            commandHandlers.Add(typeof(TCommandType), command => commandHandler.Handle((TCommandType)command));
-        }
     }
 }

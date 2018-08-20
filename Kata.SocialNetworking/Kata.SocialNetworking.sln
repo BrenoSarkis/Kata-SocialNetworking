@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.UnitT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetwork.Infrastructure.UnitTests", "Kata.SocialNetwork.Infrastructure.IntegrationTests\Kata.SocialNetwork.Infrastructure.UnitTests.csproj", "{C4A666E6-52C7-4E20-8129-59C8F27090AF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Infrastructure", "Kata.SocialNetworking.Infrastructure\Kata.SocialNetworking.Infrastructure.csproj", "{81A68097-51CF-427F-BD67-544C11235741}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C4A666E6-52C7-4E20-8129-59C8F27090AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4A666E6-52C7-4E20-8129-59C8F27090AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4A666E6-52C7-4E20-8129-59C8F27090AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81A68097-51CF-427F-BD67-544C11235741}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81A68097-51CF-427F-BD67-544C11235741}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81A68097-51CF-427F-BD67-544C11235741}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81A68097-51CF-427F-BD67-544C11235741}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
