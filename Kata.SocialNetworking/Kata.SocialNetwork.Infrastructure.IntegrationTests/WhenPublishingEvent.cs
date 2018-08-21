@@ -8,18 +8,20 @@ namespace Kata.SocialNetwork.Infrastructure.UnitTests
     public class WhenPublishingEvent
     {
         [Test]
-        public void ItIsDeliveredToAHandler()
+        public void ItIsDeliveredToEverySubscriber()
         {
             var id = 1;
             var dummyEvent = new DummyEvent(id: id);
             var bus = new Bus();
-            var eventHandlerMock = Substitute.For<IHandleEventsOf<DummyEvent>>();
+            var aHandler = Substitute.For<IHandleEventsOf<DummyEvent>>();
+            var anotherHandler = Substitute.For<IHandleEventsOf<DummyEvent>>();
 
-            bus.RegisterEventHandlers(eventHandlerMock);
+            bus.RegisterEventHandlers(aHandler, anotherHandler);
 
             bus.Publish(dummyEvent);
 
-            eventHandlerMock.Received().Handle(Arg.Is<DummyEvent>(@event => @event.Id == id));
+            aHandler.Received().Handle(Arg.Is<DummyEvent>(@event => @event.Id == id));
+            anotherHandler.Received().Handle(Arg.Is<DummyEvent>(@event => @event.Id == id));
         }
     }
 

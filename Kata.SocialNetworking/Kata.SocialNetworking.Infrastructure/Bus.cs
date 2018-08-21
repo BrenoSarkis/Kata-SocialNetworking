@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Kata.SocialNetworking.Infrastructure.Exceptions;
 
 namespace Kata.SocialNetworking.Infrastructure
@@ -7,7 +8,7 @@ namespace Kata.SocialNetworking.Infrastructure
     public class Bus
     {
         private readonly Dictionary<Type, Action<ICommand>> commandHandlers = new Dictionary<Type, Action<ICommand>>();
-        private readonly Dictionary<Type, Action<IEvent>> eventHandlers = new Dictionary<Type, Action<IEvent>>();
+        private readonly List<Tuple<Type, Action<IEvent>>> eventHandlers = new List<Tuple<Type, Action<IEvent>>>();
 
         public void SendCommand<TCommandType>(TCommandType command) where TCommandType : ICommand
         {
@@ -29,15 +30,22 @@ namespace Kata.SocialNetworking.Infrastructure
             commandHandlers.Add(typeof(TCommandType), command => commandHandler.Handle((TCommandType)command));
         }
 
-        public void RegisterEventHandlers<TEventType>(IHandleEventsOf<TEventType> eventHandler) where TEventType : IEvent
+        public void RegisterEventHandlers<TEventType>(params IHandleEventsOf<TEventType>[] handlersToBeRegistered) where TEventType : IEvent
         {
-            eventHandlers.Add(typeof(TEventType), @event => eventHandler.Handle((TEventType)@event));
-
+            foreach (var eventHandler in handlersToBeRegistered)
+            {
+                eventHandlers.Add(new Tuple<Type, Action<IEvent>>(typeof(TEventType), @event => eventHandler.Handle((TEventType)@event)));
+            }
         }
 
         public void Publish<TEventType>(TEventType @event) where TEventType : IEvent
         {
-            eventHandlers[typeof(TEventType)].Invoke(@event);
+            var everySubscriberOfTheEvent = eventHandlers.Where(handler => handler.Item1 == typeof(TEventType));
+
+            foreach (var subscriber in everySubscriberOfTheEvent)
+            {
+                subscriber.Item2.Invoke(@event);
+            }
         }
     }
 }
