@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using Kata.SocialNetworking.Infrastructure.Exceptions;
 
@@ -17,6 +18,13 @@ namespace Kata.SocialNetworking.Infrastructure
 
                 if (aHandlerForThisMessageHasBeenRegistered)
                 {
+                    var isACommandHandler = typeof(ICommand).IsAssignableFrom(typeof(TMessage));
+
+                    if (isACommandHandler)
+                    {
+                        throw new HandlerAlreadyRegisteredException(typeof(TMessage).Name);
+                    }
+
                     messageHandlers[typeof(TMessage)].Add(message => handler.Handle((TMessage)message));
                 }
                 else

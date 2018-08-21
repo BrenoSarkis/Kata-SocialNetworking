@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bus.cs" />
+    <Compile Include="Exceptions\HandlerAlreadyRegisteredException.cs" />
     <Compile Include="Exceptions\HandlerNotFoundException.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="IEvent.cs" />

@@ -37,6 +37,18 @@ namespace Kata.SocialNetwork.Infrastructure.UnitTests
             Assert.That(() => bus.SendCommand(dummyCommand), 
                 Throws.TypeOf<HandlerNotFoundException>().With.Message.EqualTo("No handler found for command DummyCommand"));
         }
+
+        [Test]
+        public void ThrowsWhenThereAreMoreThanOneHandler()
+        {
+            var aHandler = Substitute.For<IHandleMessagesOf<DummyCommand>>();
+            var anotherHandler = Substitute.For<IHandleMessagesOf<DummyCommand>>();
+
+            bus.RegisterHandlers(aHandler);
+
+            Assert.That(() => bus.RegisterHandlers(anotherHandler),
+                Throws.TypeOf<HandlerAlreadyRegisteredException>().With.Message.EqualTo("There is handler already registered for DummyCommand"));
+        }
     }
 
     public class DummyCommand : ICommand
