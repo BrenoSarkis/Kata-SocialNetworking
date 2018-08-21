@@ -10,12 +10,13 @@ namespace Kata.SocialNetwork.Infrastructure.UnitTests
     {
         private Bus bus;
         private DummyCommand dummyCommand;
+        private int id = 1;
 
         [SetUp]
         public void SetUp()
         {
             bus = new Bus();
-            dummyCommand = new DummyCommand();
+            dummyCommand = new DummyCommand(id);
         }
 
         [Test]
@@ -27,7 +28,7 @@ namespace Kata.SocialNetwork.Infrastructure.UnitTests
 
             bus.SendCommand(dummyCommand);
 
-            commandHandlerMock.Received().Handle(Arg.Any<DummyCommand>());
+            commandHandlerMock.Received().Handle(Arg.Is<DummyCommand>(command => command.Id == id));
         }
 
         [Test]
@@ -40,5 +41,11 @@ namespace Kata.SocialNetwork.Infrastructure.UnitTests
 
     public class DummyCommand : ICommand
     {
+        public int Id { get; }
+
+        public DummyCommand(int id)
+        {
+            Id = id;
+        }
     }
 }
