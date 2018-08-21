@@ -22,7 +22,6 @@ namespace Kata.SocialNetworking.Infrastructure
             {
                 throw new HandlerNotFoundException(typeof(TCommandType).Name);
             }
-
         }
 
         public void RegisterCommandHandler<TCommandType>(IHandleCommandsOf<TCommandType> commandHandler) where TCommandType : ICommand

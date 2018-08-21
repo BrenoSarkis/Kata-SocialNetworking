@@ -5,10 +5,10 @@ using NUnit.Framework;
 namespace Kata.SocialNetwork.Infrastructure.UnitTests
 {
     [TestFixture]
-    public class WhenPublishingEvent
+    public class WhenPublishingEvents
     {
         [Test]
-        public void ItIsDeliveredToEverySubscriber()
+        public void DeliverThemToSubscribers()
         {
             var id = 1;
             var dummyEvent = new DummyEvent(id: id);
