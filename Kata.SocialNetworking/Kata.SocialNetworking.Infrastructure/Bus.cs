@@ -7,16 +7,32 @@ namespace Kata.SocialNetworking.Infrastructure
 {
     public class Bus
     {
-        private readonly Dictionary<Type, Action<ICommand>> commandHandlers = new Dictionary<Type, Action<ICommand>>();
-        private readonly List<Tuple<Type, Action<IEvent>>> eventHandlers = new List<Tuple<Type, Action<IEvent>>>();
+        private readonly Dictionary<Type, List<Action<IMessage>>> messageHandlers = new Dictionary<Type, List<Action<IMessage>>>();
+
+        public void RegisterHandlers<TMessage>(params IHandleMessagesOf<TMessage>[] handlers) where TMessage : IMessage
+        {
+            foreach (var handler in handlers)
+            {
+                var aHandlerForThisMessageHasBeenRegistered = messageHandlers.ContainsKey(typeof(TMessage));
+
+                if (aHandlerForThisMessageHasBeenRegistered)
+                {
+                    messageHandlers[typeof(TMessage)].Add(message => handler.Handle((TMessage)message));
+                }
+                else
+                {
+                    messageHandlers.Add(typeof(TMessage), new List<Action<IMessage>>{ message => handler.Handle((TMessage)message) });
+                }
+            }
+        }
 
         public void SendCommand<TCommandType>(TCommandType command) where TCommandType : ICommand
         {
-            Action<ICommand> handler;
+            List<Action<IMessage>> handlers;
 
-            if (commandHandlers.TryGetValue(typeof(TCommandType), out handler))
+            if (messageHandlers.TryGetValue(typeof(TCommandType), out handlers))
             {
-                handler.Invoke(command);
+                handlers[0].Invoke(command);
             }
             else
             {
@@ -24,26 +40,16 @@ namespace Kata.SocialNetworking.Infrastructure
             }
         }
 
-        public void RegisterCommandHandler<TCommandType>(IHandleCommandsOf<TCommandType> commandHandler) where TCommandType : ICommand
-        {
-            commandHandlers.Add(typeof(TCommandType), command => commandHandler.Handle((TCommandType)command));
-        }
-
-        public void RegisterEventHandlers<TEventType>(params IHandleEventsOf<TEventType>[] handlersToBeRegistered) where TEventType : IEvent
-        {
-            foreach (var eventHandler in handlersToBeRegistered)
-            {
-                eventHandlers.Add(new Tuple<Type, Action<IEvent>>(typeof(TEventType), @event => eventHandler.Handle((TEventType)@event)));
-            }
-        }
-
         public void Publish<TEventType>(TEventType @event) where TEventType : IEvent
         {
-            var everySubscriberOfTheEvent = eventHandlers.Where(handler => handler.Item1 == typeof(TEventType));
 
-            foreach (var subscriber in everySubscriberOfTheEvent)
+            List<Action<IMessage>> subscribers;
+
+            if (messageHandlers.TryGetValue(typeof(TEventType), out subscribers))
+
+            foreach (var subscriber in subscribers)
             {
-                subscriber.Item2.Invoke(@event);
+                subscriber(@event);
             }
         }
     }

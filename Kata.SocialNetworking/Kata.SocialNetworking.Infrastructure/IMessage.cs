@@ -1,7 +1,6 @@
 ﻿namespace Kata.SocialNetworking.Infrastructure
 {
-    public interface IEvent : IMessage
+    public interface IMessage
     {
-
     }
 }

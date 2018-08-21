@@ -13,10 +13,10 @@ namespace Kata.SocialNetwork.Infrastructure.UnitTests
             var id = 1;
             var dummyEvent = new DummyEvent(id: id);
             var bus = new Bus();
-            var aHandler = Substitute.For<IHandleEventsOf<DummyEvent>>();
-            var anotherHandler = Substitute.For<IHandleEventsOf<DummyEvent>>();
+            var aHandler = Substitute.For<IHandleMessagesOf<DummyEvent>>();
+            var anotherHandler = Substitute.For<IHandleMessagesOf<DummyEvent>>();
 
-            bus.RegisterEventHandlers(aHandler, anotherHandler);
+            bus.RegisterHandlers(aHandler, anotherHandler);
 
             bus.Publish(dummyEvent);
 

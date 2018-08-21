@@ -22,9 +22,9 @@ namespace Kata.SocialNetwork.Infrastructure.UnitTests
         [Test]
         public void ItIsDeliveredToItsHandler()
         {
-            var commandHandlerMock = Substitute.For<IHandleCommandsOf<DummyCommand>>();
+            var commandHandlerMock = Substitute.For<IHandleMessagesOf<DummyCommand>>();
 
-            bus.RegisterCommandHandler(commandHandlerMock);
+            bus.RegisterHandlers(commandHandlerMock);
 
             bus.SendCommand(dummyCommand);
 
