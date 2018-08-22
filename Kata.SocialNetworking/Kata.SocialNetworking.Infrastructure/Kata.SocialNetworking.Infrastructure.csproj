@@ -44,10 +44,10 @@
     <Compile Include="Bus.cs" />
     <Compile Include="Exceptions\HandlerAlreadyRegisteredException.cs" />
     <Compile Include="Exceptions\HandlerNotFoundException.cs" />
-    <Compile Include="ICommand.cs" />
-    <Compile Include="IEvent.cs" />
-    <Compile Include="IHandleMessagesOf.cs" />
-    <Compile Include="IMessage.cs" />
+    <Compile Include="Messaging\ICommand.cs" />
+    <Compile Include="Messaging\IEvent.cs" />
+    <Compile Include="Messaging\IHandleMessagesOf.cs" />
+    <Compile Include="Messaging\IMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

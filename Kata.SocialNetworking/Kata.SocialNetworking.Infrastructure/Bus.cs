@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Kata.SocialNetworking.Infrastructure.Exceptions;
+using Kata.SocialNetworking.Infrastructure.Messaging;
 
 namespace Kata.SocialNetworking.Infrastructure
 {
