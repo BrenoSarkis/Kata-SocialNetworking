@@ -1,5 +1,4 @@
-﻿using Kata.SocialNetwork.Messages;
-using Kata.SocialNetwork.Messages.Post;
+﻿using Kata.SocialNetwork.Messages.Post;
 using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Messaging;
 using Kata.SocialNetworking.Post;
