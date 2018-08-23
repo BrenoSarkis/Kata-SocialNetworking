@@ -1,4 +1,6 @@
-﻿using Kata.SocialNetworking.Infrastructure;
+﻿using Kata.SocialNetwork.Messages;
+using Kata.SocialNetwork.Messages.Post;
+using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Messaging;
 using NSubstitute;
 using NUnit.Framework;
@@ -24,17 +26,7 @@ namespace Kata.SocialNetworking.UnitTests
         }
     }
 
-    public class PostMessage : ICommand
-    {
-        public string UserName { get; }
-        public string Message { get; }
 
-        public PostMessage(string userName, string message)
-        {
-            UserName = userName;
-            Message = message;
-        }
-    }
 
     public class PostMessageHandler : IHandleMessagesOf<PostMessage>
     {
@@ -51,15 +43,4 @@ namespace Kata.SocialNetworking.UnitTests
         }
     }
 
-    public class MessagePosted : IEvent
-    {
-        public string UserName { get; }
-        public string Message { get; }
-
-        public MessagePosted(string userName, string message)
-        {
-            UserName = userName;
-            Message = message;
-        }
-    }
 }

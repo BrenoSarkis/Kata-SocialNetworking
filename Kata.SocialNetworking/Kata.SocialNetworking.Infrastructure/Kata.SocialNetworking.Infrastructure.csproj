@@ -44,6 +44,7 @@
     <Compile Include="Bus.cs" />
     <Compile Include="Exceptions\HandlerAlreadyRegisteredException.cs" />
     <Compile Include="Exceptions\HandlerNotFoundException.cs" />
+    <Compile Include="Messaging\IBus.cs" />
     <Compile Include="Messaging\ICommand.cs" />
     <Compile Include="Messaging\IEvent.cs" />
     <Compile Include="Messaging\IHandleMessagesOf.cs" />
