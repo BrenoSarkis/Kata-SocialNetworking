@@ -2,6 +2,7 @@
 using Kata.SocialNetwork.Messages.Post;
 using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Messaging;
+using Kata.SocialNetworking.Post;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -25,22 +26,4 @@ namespace Kata.SocialNetworking.UnitTests
             messagePostedHandler.Received().Handle(Arg.Is<MessagePosted>(mp => mp.UserName == "aUserName" && mp.Message == "aMessage"));
         }
     }
-
-
-
-    public class PostMessageHandler : IHandleMessagesOf<PostMessage>
-    {
-        private readonly Bus bus;
-
-        public PostMessageHandler(Bus bus)
-        {
-            this.bus = bus;
-        }
-
-        public void Handle(PostMessage message)
-        {
-            this.bus.Publish(new MessagePosted(message.UserName, message.Message));
-        }
-    }
-
 }
