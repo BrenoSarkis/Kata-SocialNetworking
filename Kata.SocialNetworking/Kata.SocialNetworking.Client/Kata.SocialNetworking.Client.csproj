@@ -48,11 +48,5 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Kata.SocialNetwork.Messages\Kata.SocialNetwork.Messages.csproj">
-      <Project>{7DB30CDA-47AE-4578-817C-1C9752B3435C}</Project>
-      <Name>Kata.SocialNetwork.Messages</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

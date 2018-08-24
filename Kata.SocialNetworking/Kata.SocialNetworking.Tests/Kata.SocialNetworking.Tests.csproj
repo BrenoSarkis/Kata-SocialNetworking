@@ -82,10 +82,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Kata.SocialNetwork.Messages\Kata.SocialNetwork.Messages.csproj">
-      <Project>{7DB30CDA-47AE-4578-817C-1C9752B3435C}</Project>
-      <Name>Kata.SocialNetwork.Messages</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Kata.SocialNetworking.Client\Kata.SocialNetworking.Client.csproj">
       <Project>{49CC562C-1A50-4CA3-81AC-5ED8A035E832}</Project>
       <Name>Kata.SocialNetworking.Client</Name>

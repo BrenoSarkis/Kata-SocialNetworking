@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Tests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Client", "Kata.SocialNetworking.Client\Kata.SocialNetworking.Client.csproj", "{49CC562C-1A50-4CA3-81AC-5ED8A035E832}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetwork.Messages", "Kata.SocialNetwork.Messages\Kata.SocialNetwork.Messages.csproj", "{7DB30CDA-47AE-4578-817C-1C9752B3435C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.UnitTests", "Kata.SocialNetworking.UnitTests\Kata.SocialNetworking.UnitTests.csproj", "{F68A7B9A-B5A4-43FF-86BC-F1F91B767D4D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Infrastructure", "Kata.SocialNetworking.Infrastructure\Kata.SocialNetworking.Infrastructure.csproj", "{81A68097-51CF-427F-BD67-544C11235741}"
@@ -16,6 +14,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking", "Kata.SocialNetworking\Kata.SocialNetworking.csproj", "{06683EB8-7205-40D8-B929-2EBFBEEBA796}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Infrastructure.UnitTests", "Kata.SocialNetworking.Infrastructure.UnitTests\Kata.SocialNetworking.Infrastructure.UnitTests.csproj", "{FB1DDCB2-A341-420B-A040-AC154903E3E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Messages", "Kata.SocialNetworking.Messages\Kata.SocialNetworking.Messages.csproj", "{5AB4C73F-7639-4B9F-BFDB-0D0D055E691C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,6 @@ Global
 		{49CC562C-1A50-4CA3-81AC-5ED8A035E832}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49CC562C-1A50-4CA3-81AC-5ED8A035E832}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49CC562C-1A50-4CA3-81AC-5ED8A035E832}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DB30CDA-47AE-4578-817C-1C9752B3435C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DB30CDA-47AE-4578-817C-1C9752B3435C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DB30CDA-47AE-4578-817C-1C9752B3435C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DB30CDA-47AE-4578-817C-1C9752B3435C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F68A7B9A-B5A4-43FF-86BC-F1F91B767D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F68A7B9A-B5A4-43FF-86BC-F1F91B767D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F68A7B9A-B5A4-43FF-86BC-F1F91B767D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +47,10 @@ Global
 		{FB1DDCB2-A341-420B-A040-AC154903E3E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB1DDCB2-A341-420B-A040-AC154903E3E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB1DDCB2-A341-420B-A040-AC154903E3E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AB4C73F-7639-4B9F-BFDB-0D0D055E691C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AB4C73F-7639-4B9F-BFDB-0D0D055E691C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AB4C73F-7639-4B9F-BFDB-0D0D055E691C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AB4C73F-7639-4B9F-BFDB-0D0D055E691C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

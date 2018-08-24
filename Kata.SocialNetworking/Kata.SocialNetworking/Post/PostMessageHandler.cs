@@ -1,7 +1,7 @@
-﻿using Kata.SocialNetwork.Messages.Post;
-using Kata.SocialNetworking.Infrastructure;
+﻿using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Messaging;
 using Kata.SocialNetworking.Infrastructure.Storage;
+using Kata.SocialNetworking.Messages.Post;
 
 namespace Kata.SocialNetworking.Post
 {
