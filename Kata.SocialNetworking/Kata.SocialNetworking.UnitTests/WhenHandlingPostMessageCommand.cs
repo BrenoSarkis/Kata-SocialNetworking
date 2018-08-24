@@ -11,32 +11,41 @@ namespace Kata.SocialNetworking.UnitTests
     [TestFixture]
     public class WhenHandlingPostMessageCommand
     {
+        private const string UserName = "aUserName";
+        private const string Message = "aMessage";
+        private IEventStore eventStore;
+        private Bus bus;
+        private PostMessageHandler postMessageHandler;
+        private PostMessage postMessageCommand;
+
+        [SetUp]
+        public void SetUp()
+        {
+            eventStore = Substitute.For<IEventStore>();
+            bus = new Bus();
+            postMessageHandler = new PostMessageHandler(bus, eventStore);
+            postMessageCommand = new PostMessage(UserName, Message);
+        }
+
         [Test]
         public void RaisesMessagePostedEvent()
         {
-            var eventStore = Substitute.For<IEventStore>();
             var messagePostedHandler = Substitute.For<IHandleMessagesOf<MessagePosted>>();
-            var command = new PostMessage("aUserName", "aMessage");
-            var bus = new Bus();
 
-            bus.RegisterHandlers(new PostMessageHandler(bus, eventStore));
+            bus.RegisterHandlers(postMessageHandler);
             bus.RegisterHandlers(messagePostedHandler);
 
-            bus.SendCommand(command);
+            bus.SendCommand(postMessageCommand);
 
-            messagePostedHandler.Received().Handle(Arg.Is<MessagePosted>(mp => mp.UserName == "aUserName" && mp.Message == "aMessage"));
+            messagePostedHandler.Received().Handle(Arg.Is<MessagePosted>(mp => mp.UserName == UserName && mp.Message == Message));
         }
 
         [Test]
         public void MessagePostedIsStored()
         {
-            var bus = new Bus();
-            var eventStore = Substitute.For<IEventStore>();
-            var postMessageHandler = new PostMessageHandler(bus, eventStore);
+            postMessageHandler.Handle(postMessageCommand);
 
-            postMessageHandler.Handle(new PostMessage("aUserName", "aMessage"));
-
-            eventStore.Received().Save(Arg.Is<MessagePosted>(mp => mp.UserName == "aUserName" && mp.Message == "aMessage"));
+            eventStore.Received().Save(Arg.Is<MessagePosted>(mp => mp.UserName == UserName && mp.Message == Message));
         }
     }
 }
