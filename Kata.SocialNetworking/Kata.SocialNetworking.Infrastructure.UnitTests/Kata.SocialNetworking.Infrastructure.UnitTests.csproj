@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenPublishingEvents.cs" />
+    <Compile Include="WhenSavingEvents.cs" />
     <Compile Include="WhenSendingCommand.cs" />
   </ItemGroup>
   <ItemGroup>
