@@ -7,7 +7,7 @@ using Kata.SocialNetworking.Infrastructure.Messaging;
 
 namespace Kata.SocialNetworking.Infrastructure
 {
-    public class Bus
+    public class Bus : IBus
     {
         private readonly Dictionary<Type, List<Action<IMessage>>> messageHandlers = new Dictionary<Type, List<Action<IMessage>>>();
 
