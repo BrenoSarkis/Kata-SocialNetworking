@@ -16,10 +16,9 @@ namespace Kata.SocialNetworking.Infrastructure.UnitTests
             var eventStore = new EventStore();
 
             eventStore.Save(aggregateId, new DummyEvent(1));
-            var newlyStoredEvent = eventStore.GetEventsForAggregate(aggregateId);
+            var newlyStoredEvent = eventStore.GetEventsForAggregate(aggregateId).Cast<DummyEvent>().Single();
 
-            Assert.That(newlyStoredEvent.Count(), Is.EqualTo(1));
-            Assert.That(newlyStoredEvent.Cast<DummyEvent>().Single().Id, Is.EqualTo(1));
+            Assert.That(newlyStoredEvent.Id, Is.EqualTo(1));
         }
     }
 
