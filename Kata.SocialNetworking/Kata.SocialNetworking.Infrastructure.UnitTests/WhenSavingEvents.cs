@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using Kata.SocialNetworking.Infrastructure.Messaging;
 using NUnit.Framework;
 
 namespace Kata.SocialNetworking.Infrastructure.UnitTests
