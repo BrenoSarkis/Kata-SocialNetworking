@@ -3,6 +3,8 @@ using System;
 using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
+using Kata.SocialNetworking.Infrastructure;
+using Kata.SocialNetworking.Messages.Post;
 using NSubstitute;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
@@ -14,11 +16,10 @@ namespace Kata.SocialNetworking.Tests
     {
         public UserController UserController { get; } = new UserController();
 
-
         [Given(@"I post the message ""(.*)""")]
-        public void GivenIPostTheMessage(string message)
+        public void GivenIPostTheMessage(string command)
         {
-            UserController.PostMessage(message);
+            UserController.PostMessage(command);
         }
 
         [When(@"I visit ""(.*)""'s wall")]
