@@ -39,10 +39,8 @@ namespace Kata.SocialNetworking.Tests
         public Presenter Presenter { get; } = new Presenter();
         public ViewModel ViewModel { get; } = new ViewModel();
 
-
         public void PostMessage(string message)
         {
-            throw new NotImplementedException();
         }
 
         public void PrepareWallFor(string userName)
