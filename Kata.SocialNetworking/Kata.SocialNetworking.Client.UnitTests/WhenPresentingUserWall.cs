@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using Kata.SocialNetworking.Messages.Post;
 using NUnit.Framework;
-using NUnit.Framework.Constraints;
 
 namespace Kata.SocialNetworking.Client.UnitTests
 {
