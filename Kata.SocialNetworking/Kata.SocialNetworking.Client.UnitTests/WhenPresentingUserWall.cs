@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Kata.SocialNetworking.Infrastructure.Clock;
+﻿using Kata.SocialNetworking.Infrastructure.Clock;
 using Kata.SocialNetworking.Messages.Post;
 using NUnit.Framework;
 
