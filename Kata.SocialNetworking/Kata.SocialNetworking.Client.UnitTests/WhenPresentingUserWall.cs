@@ -37,16 +37,12 @@ namespace Kata.SocialNetworking.Client.UnitTests
         [Test]
         public void PresentesAnAggregateOfUserPostsWithSecondsOfDifference()
         {
-            wallPresenter.AppendToUsersWall(new MessagePosted(userName, message, fakeClock.Now()));
-
-            wallPresenter.AppendToUsersWall(new MessagePosted(userName, anotherMessage, fakeClock.Now().AddSeconds(1)));
-
-            var userWall = wallPresenter.PresentWallFor(userName);
+            var userWall = GetWallBasedOnPosts(userName, new MessagePosted(userName, message, fakeClock.Now()),
+                                                         new MessagePosted(userName, anotherMessage, fakeClock.Now().AddSeconds(1)));
 
             Assert.That(userWall[0], Is.EqualTo("Alice -> a message (0 seconds ago)"));
             Assert.That(userWall[1], Is.EqualTo("Alice -> a different message! (1 second ago)"));
         }
-
 
         [Test]
         public void PresentesAnAggregateOfUserPostsWithMinutesOfDifference()
