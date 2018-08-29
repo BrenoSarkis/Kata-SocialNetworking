@@ -11,6 +11,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
         private string userName;
         private string message;
         private string anotherMessage;
+        private string yetAnotherMessage;
         private WallPresenter wallPresenter;
         private FakeClock fakeClock;
 
@@ -20,6 +21,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
             userName = "Alice";
             message = "a message";
             anotherMessage = "a different message!";
+            yetAnotherMessage = "yet a different message.";
             fakeClock = new FakeClock();
             wallPresenter = new WallPresenter(fakeClock);
         }
@@ -43,6 +45,20 @@ namespace Kata.SocialNetworking.Client.UnitTests
 
             Assert.That(userWall[0], Is.EqualTo("Alice -> a message (0 seconds ago)"));
             Assert.That(userWall[1], Is.EqualTo("Alice -> a different message! (1 second ago)"));
+        }
+
+
+        [Test]
+        public void PresentesAnAggregateOfUserPostsWithMinutesOfDifference()
+        {
+            var userWall = GetWallBasedOnPosts(userName, new MessagePosted(userName, message, fakeClock.Now()),
+                                                         new MessagePosted(userName, anotherMessage, fakeClock.Now().AddMinutes(1)),
+                                                         new MessagePosted(userName, yetAnotherMessage, fakeClock.Now().AddMinutes(2)));
+                
+
+            Assert.That(userWall[0], Is.EqualTo("Alice -> a message (0 seconds ago)"));
+            Assert.That(userWall[1], Is.EqualTo("Alice -> a different message! (1 minute ago)"));
+            Assert.That(userWall[2], Is.EqualTo("Alice -> yet a different message. (2 minutes ago)"));
         }
 
         private string[] GetWallBasedOnPosts(string userName, params MessagePosted[] posts)
@@ -83,9 +99,21 @@ namespace Kata.SocialNetworking.Client.UnitTests
 
         private string DefineTimeElapsed(DateTime date)
         {
-            var secondsElapsed = (date - clock.Now()).Seconds;
-            var usePluralIfApplicable = secondsElapsed != 1 ? "s" : "";
-            return $"({secondsElapsed} second{usePluralIfApplicable} ago)";
+            var timeElapsed = (date - clock.Now());
+            var secondsElapsed = timeElapsed.Seconds;
+            var minutesElapsed = timeElapsed.Minutes;
+
+            if (minutesElapsed > 0)
+            {
+                return $"({minutesElapsed} minute{FormatTime(minutesElapsed)} ago)";
+            }
+
+            return $"({secondsElapsed} second{FormatTime(secondsElapsed)} ago)";
+        }
+
+        private string FormatTime(int value)
+        {
+            return value != 1 ? "s" : "";
         }
 
         public string[] PresentWallFor(string userName)
