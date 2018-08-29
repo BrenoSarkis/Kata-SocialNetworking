@@ -8,9 +8,10 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Kata.SocialNetworking.Client</RootNamespace>
     <AssemblyName>Kata.SocialNetworking.Client</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -44,9 +45,20 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WallPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kata.SocialNetworking.Infrastructure\Kata.SocialNetworking.Infrastructure.csproj">
+      <Project>{81A68097-51CF-427F-BD67-544C11235741}</Project>
+      <Name>Kata.SocialNetworking.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kata.SocialNetworking.Messages\Kata.SocialNetworking.Messages.csproj">
+      <Project>{5AB4C73F-7639-4B9F-BFDB-0D0D055E691C}</Project>
+      <Name>Kata.SocialNetworking.Messages</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

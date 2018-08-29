@@ -54,6 +54,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kata.SocialNetworking.Client\Kata.SocialNetworking.Client.csproj">
+      <Project>{49CC562C-1A50-4CA3-81AC-5ED8A035E832}</Project>
+      <Name>Kata.SocialNetworking.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kata.SocialNetworking.Infrastructure\Kata.SocialNetworking.Infrastructure.csproj">
+      <Project>{81A68097-51CF-427F-BD67-544C11235741}</Project>
+      <Name>Kata.SocialNetworking.Infrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kata.SocialNetworking.Messages\Kata.SocialNetworking.Messages.csproj">
       <Project>{5AB4C73F-7639-4B9F-BFDB-0D0D055E691C}</Project>
       <Name>Kata.SocialNetworking.Messages</Name>
