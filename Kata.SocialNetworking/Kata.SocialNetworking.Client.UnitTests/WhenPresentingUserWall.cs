@@ -36,7 +36,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
         }
 
         [Test]
-        public void PresentesAnAggregateOfUserPosts()
+        public void PresentesAnAggregateOfUserPostsWithSecondsOfDifference()
         {
             wallPresenter.AppendToUsersWall(new MessagePosted(userName, message, fakeClock.Now()));
 
