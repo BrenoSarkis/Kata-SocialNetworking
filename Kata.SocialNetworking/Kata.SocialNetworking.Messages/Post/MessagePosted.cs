@@ -1,4 +1,5 @@
-﻿using Kata.SocialNetworking.Infrastructure.Messaging;
+﻿using System;
+using Kata.SocialNetworking.Infrastructure.Messaging;
 
 namespace Kata.SocialNetworking.Messages.Post
 {
@@ -6,11 +7,13 @@ namespace Kata.SocialNetworking.Messages.Post
     {
         public string UserName { get; }
         public string Message { get; }
+        public DateTime Date { get; set; }
 
-        public MessagePosted(string userName, string message)
+        public MessagePosted(string userName, string message, DateTime date)
         {
             UserName = userName;
             Message = message;
+            Date = date;
         }
     }
 }

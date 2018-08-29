@@ -1,4 +1,5 @@
-﻿using Kata.SocialNetworking.Infrastructure;
+﻿using System;
+using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Messaging;
 using Kata.SocialNetworking.Infrastructure.Storage;
 using Kata.SocialNetworking.Messages.Post;
@@ -18,7 +19,7 @@ namespace Kata.SocialNetworking.Post
 
         public void Handle(PostMessage message)
         {
-            var messagePosted = new MessagePosted(message.UserName, message.Message);
+            var messagePosted = new MessagePosted(message.UserName, message.Message, DateTime.Now);
             eventStore.Save(messagePosted);
             bus.Publish(messagePosted);
         }
