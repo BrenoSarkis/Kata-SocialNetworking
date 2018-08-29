@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Kata.SocialNetworking.Messages.Post;
 using NUnit.Framework;
@@ -28,7 +29,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
         {
             var userWall = GetWallBasedOnPosts(userName, new MessagePosted(userName, message));
 
-            Assert.That(userWall[0], Is.EqualTo("Alice -> a message"));
+            Assert.That(userWall[0], Is.EqualTo("Alice -> a message (0 seconds ago)"));
         }
 
         [Test]
@@ -54,16 +55,16 @@ namespace Kata.SocialNetworking.Client.UnitTests
 
     public class WallPresenter
     {
-        private readonly Dictionary<string, List<string>> walls = new Dictionary<string, List<string>>();
+        private readonly Dictionary<string, List<TimedMessage>> walls = new Dictionary<string, List<TimedMessage>>();
 
         public void AppendToUsersWall(MessagePosted messagePosted)
         {
-            var messageToBeAdded = $"{messagePosted.UserName} -> {messagePosted.Message}";
+            var messageToBeAdded = new TimedMessage($"{messagePosted.UserName} -> {messagePosted.Message}");
             bool hasNeverBuiltThisUsersWallBefore = !walls.ContainsKey(messagePosted.UserName);
 
             if (hasNeverBuiltThisUsersWallBefore)
             {
-                walls.Add(messagePosted.UserName, new List<string> {messageToBeAdded});
+                walls.Add(messagePosted.UserName, new List<TimedMessage> { messageToBeAdded });
             }
             else
             {
@@ -73,7 +74,25 @@ namespace Kata.SocialNetworking.Client.UnitTests
 
         public string[] PresentWallFor(string userName)
         {
-            return walls[userName].ToArray();
+            return walls[userName].Select(m => m.ToString()).ToArray();
+        }
+    }
+
+    public class TimedMessage
+    {
+        public string Message { get; }
+        public DateTime Time { get; } = DateTime.Now;
+
+        public TimedMessage(string message)
+        {
+            Message = message;
+        }
+
+        public override string ToString()
+        {
+            var timeDifference = (DateTime.Now - Time);
+
+            return $"{Message} ({timeDifference.Seconds} seconds ago)";
         }
     }
 }
