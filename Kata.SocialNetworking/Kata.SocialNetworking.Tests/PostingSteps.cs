@@ -39,7 +39,7 @@ namespace Kata.SocialNetworking.Tests
 
     public class UserController
     {
-        public WallPresenter Presenter { get; } = new WallPresenter(new FakeClock());
+        public WallPresenter Presenter { get; } = new WallPresenter(new Clock());
         public ViewModel ViewModel { get; } = new ViewModel();
 
         public void PostMessage(string message)

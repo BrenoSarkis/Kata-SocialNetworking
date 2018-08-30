@@ -75,7 +75,7 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
  testRunner.When("I visit \"Alice\"\'s wall", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
- testRunner.Then("I should see \"Alice - I love weather today (0 seconds ago)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I should see \"Alice - I love the weather today (0 seconds ago)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
