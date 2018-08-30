@@ -1,13 +1,9 @@
 ﻿using Kata.SocialNetworking.Client;
 using System;
-using System.ComponentModel.Design;
-using System.Linq;
-using System.Text;
 using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Clock;
 using Kata.SocialNetworking.Messages.Post;
 using Kata.SocialNetworking.Post;
-using NSubstitute;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
 

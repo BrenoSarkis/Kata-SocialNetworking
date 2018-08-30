@@ -1,5 +1,4 @@
-﻿using Kata.SocialNetworking.Infrastructure.Clock;
-using Kata.SocialNetworking.Messages.Post;
+﻿using Kata.SocialNetworking.Messages.Post;
 using NUnit.Framework;
 
 namespace Kata.SocialNetworking.Client.UnitTests
