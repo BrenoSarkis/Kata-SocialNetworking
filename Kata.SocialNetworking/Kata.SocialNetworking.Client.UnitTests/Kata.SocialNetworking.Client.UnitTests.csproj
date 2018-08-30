@@ -50,6 +50,7 @@
     <Compile Include="FakeClock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenPresentingUserWall.cs" />
+    <Compile Include="WhenTransformingInput.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
