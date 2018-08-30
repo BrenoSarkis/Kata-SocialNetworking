@@ -30,7 +30,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
         {
             var userWall = GetWallBasedOnPosts(userName, new MessagePosted(userName, message, fakeClock.Now()));
 
-            Assert.That(userWall[0], Is.EqualTo("Alice -> a message (0 seconds ago)"));
+            Assert.That(userWall[0], Is.EqualTo("Alice - a message (0 seconds ago)"));
         }
 
         [Test]
@@ -39,8 +39,8 @@ namespace Kata.SocialNetworking.Client.UnitTests
             var userWall = GetWallBasedOnPosts(userName, new MessagePosted(userName, message, fakeClock.Now()),
                                                          new MessagePosted(userName, anotherMessage, fakeClock.Now().AddSeconds(1)));
 
-            Assert.That(userWall[0], Is.EqualTo("Alice -> a message (0 seconds ago)"));
-            Assert.That(userWall[1], Is.EqualTo("Alice -> a different message! (1 second ago)"));
+            Assert.That(userWall[0], Is.EqualTo("Alice - a message (0 seconds ago)"));
+            Assert.That(userWall[1], Is.EqualTo("Alice - a different message! (1 second ago)"));
         }
 
         [Test]
@@ -51,9 +51,9 @@ namespace Kata.SocialNetworking.Client.UnitTests
                                                          new MessagePosted(userName, yetAnotherMessage, fakeClock.Now().AddMinutes(2)));
                 
 
-            Assert.That(userWall[0], Is.EqualTo("Alice -> a message (0 seconds ago)"));
-            Assert.That(userWall[1], Is.EqualTo("Alice -> a different message! (1 minute ago)"));
-            Assert.That(userWall[2], Is.EqualTo("Alice -> yet a different message. (2 minutes ago)"));
+            Assert.That(userWall[0], Is.EqualTo("Alice - a message (0 seconds ago)"));
+            Assert.That(userWall[1], Is.EqualTo("Alice - a different message! (1 minute ago)"));
+            Assert.That(userWall[2], Is.EqualTo("Alice - yet a different message. (2 minutes ago)"));
         }
 
         private string[] GetWallBasedOnPosts(string userName, params MessagePosted[] posts)

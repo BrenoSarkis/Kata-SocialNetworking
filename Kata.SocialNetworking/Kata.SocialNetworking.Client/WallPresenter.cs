@@ -17,7 +17,7 @@ namespace Kata.SocialNetworking.Client
 
         public void AppendToUsersWall(MessagePosted messagePosted)
         {
-            var messageToBeAdded = $"{messagePosted.UserName} -> {messagePosted.Message} {DefineTimeElapsed(messagePosted.Date)}";
+            var messageToBeAdded = $"{messagePosted.UserName} - {messagePosted.Message} {DefineTimeElapsed(messagePosted.Date)}";
             bool hasNeverBuiltThisUsersWallBefore = !walls.ContainsKey(messagePosted.UserName);
 
             if (hasNeverBuiltThisUsersWallBefore)
