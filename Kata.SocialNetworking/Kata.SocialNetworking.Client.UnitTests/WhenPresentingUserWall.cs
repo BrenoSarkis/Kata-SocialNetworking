@@ -60,7 +60,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
         {
             foreach (var post in posts)
             {
-                wallPresenter.AppendToUsersWall(post);
+                wallPresenter.Handle(post);
             }
 
             return wallPresenter.PresentWallFor(userName);

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Kata.SocialNetworking.Infrastructure.Messaging;
+using Kata.SocialNetworking.Infrastructure.Storage;
 
 namespace Kata.SocialNetworking.Infrastructure
 {
-    public class EventStore
+    public class EventStore : IEventStore
     {
         private readonly Dictionary<Guid, List<IEvent>> events = new Dictionary<Guid, List<IEvent>>();
 

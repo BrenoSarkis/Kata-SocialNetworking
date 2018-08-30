@@ -4,7 +4,9 @@ using System.ComponentModel.Design;
 using System.Linq;
 using System.Text;
 using Kata.SocialNetworking.Infrastructure;
+using Kata.SocialNetworking.Infrastructure.Clock;
 using Kata.SocialNetworking.Messages.Post;
+using Kata.SocialNetworking.Post;
 using NSubstitute;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
@@ -31,35 +33,33 @@ namespace Kata.SocialNetworking.Tests
         [Then(@"I should see ""(.*)""")]
         public void ThenIShouldSee(string expectedMessage)
         {
-            Assert.That(UserController.ViewModel.Output.ToString(), Is.EqualTo(expectedMessage));
+            Assert.That(UserController.ViewModel.Output, Is.EqualTo(expectedMessage));
         }
     }
 
     public class UserController
     {
-        public Presenter Presenter { get; } = new Presenter();
+        public WallPresenter Presenter { get; } = new WallPresenter(new FakeClock());
         public ViewModel ViewModel { get; } = new ViewModel();
 
         public void PostMessage(string message)
         {
+            var bus = new Bus();
+            bus.RegisterHandlers(new PostMessageHandler(bus, new EventStore()));
+            bus.RegisterHandlers(Presenter);
+
+            var splittedMessage = message.Split(new [] {"->"}, StringSplitOptions.None);
+            bus.SendCommand(new PostMessage(userName: splittedMessage[0].Trim(), message: splittedMessage[1].Trim()));
         }
 
         public void PrepareWallFor(string userName)
         {
-            ViewModel.Output.Append(Presenter.GetWallFor(userName));
+            ViewModel.Output = String.Join(Environment.NewLine, Presenter.PresentWallFor(userName));
         }
     }
 
     public class ViewModel
     {
-        public StringBuilder Output { get; set; }
-    }
-
-    public class Presenter
-    {
-        public string[] GetWallFor(string userName)
-        {
-            throw new NotImplementedException();
-        }
+        public string Output { get; set; }
     }
 }

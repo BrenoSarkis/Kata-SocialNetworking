@@ -1,21 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using Kata.SocialNetworking.Infrastructure.Clock;
+using Kata.SocialNetworking.Infrastructure.Messaging;
 using Kata.SocialNetworking.Messages.Post;
 
 namespace Kata.SocialNetworking.Client
 {
-    public class WallPresenter
+    public class WallPresenter : IHandleMessagesOf<MessagePosted>
     {
         private readonly IClock clock;
+        private readonly Dictionary<string, List<string>> walls = new Dictionary<string, List<string>>();
+
         public WallPresenter(IClock clock)
         {
             this.clock = clock;
         }
 
-        private readonly Dictionary<string, List<string>> walls = new Dictionary<string, List<string>>();
-
-        public void AppendToUsersWall(MessagePosted messagePosted)
+        public void Handle(MessagePosted messagePosted)
         {
             var messageToBeAdded = $"{messagePosted.UserName} - {messagePosted.Message} {DefineTimeElapsed(messagePosted.Date)}";
             bool hasNeverBuiltThisUsersWallBefore = !walls.ContainsKey(messagePosted.UserName);

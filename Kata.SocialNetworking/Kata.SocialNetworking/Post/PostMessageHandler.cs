@@ -20,7 +20,7 @@ namespace Kata.SocialNetworking.Post
         public void Handle(PostMessage message)
         {
             var messagePosted = new MessagePosted(message.UserName, message.Message, DateTime.Now);
-            eventStore.Save(messagePosted);
+            //eventStore.Save(messagePosted);
             bus.Publish(messagePosted);
         }
     }

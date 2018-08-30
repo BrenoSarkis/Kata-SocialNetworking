@@ -40,12 +40,12 @@ namespace Kata.SocialNetworking.UnitTests
             messagePostedHandler.Received().Handle(Arg.Is<MessagePosted>(mp => mp.UserName == UserName && mp.Message == Message));
         }
 
-        [Test]
-        public void MessagePostedIsStored()
-        {
-            postMessageHandler.Handle(postMessageCommand);
+        //[Test]
+        //public void MessagePostedIsStored()
+        //{
+        //    postMessageHandler.Handle(postMessageCommand);
 
-            eventStore.Received().Save(Arg.Is<MessagePosted>(mp => mp.UserName == UserName && mp.Message == Message));
-        }
+        //    eventStore.Received().Save(Arg.Is<MessagePosted>(mp => mp.UserName == UserName && mp.Message == Message));
+        //}
     }
 }
