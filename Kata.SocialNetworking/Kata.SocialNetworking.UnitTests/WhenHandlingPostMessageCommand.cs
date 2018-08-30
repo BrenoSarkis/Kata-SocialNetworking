@@ -1,6 +1,5 @@
 ﻿using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Messaging;
-using Kata.SocialNetworking.Infrastructure.Storage;
 using Kata.SocialNetworking.Messages.Post;
 using Kata.SocialNetworking.Post;
 using NSubstitute;
@@ -13,7 +12,6 @@ namespace Kata.SocialNetworking.UnitTests
     {
         private const string UserName = "aUserName";
         private const string Message = "aMessage";
-        private IEventStore eventStore;
         private Bus bus;
         private PostMessageHandler postMessageHandler;
         private PostMessage postMessageCommand;
@@ -21,9 +19,8 @@ namespace Kata.SocialNetworking.UnitTests
         [SetUp]
         public void SetUp()
         {
-            eventStore = Substitute.For<IEventStore>();
             bus = new Bus();
-            postMessageHandler = new PostMessageHandler(bus, eventStore);
+            postMessageHandler = new PostMessageHandler(bus);
             postMessageCommand = new PostMessage(UserName, Message);
         }
 
@@ -39,13 +36,5 @@ namespace Kata.SocialNetworking.UnitTests
 
             messagePostedHandler.Received().Handle(Arg.Is<MessagePosted>(mp => mp.UserName == UserName && mp.Message == Message));
         }
-
-        //[Test]
-        //public void MessagePostedIsStored()
-        //{
-        //    postMessageHandler.Handle(postMessageCommand);
-
-        //    eventStore.Received().Save(Arg.Is<MessagePosted>(mp => mp.UserName == UserName && mp.Message == Message));
-        //}
     }
 }

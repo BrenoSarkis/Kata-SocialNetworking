@@ -45,7 +45,7 @@ namespace Kata.SocialNetworking.Tests
         public void PostMessage(string message)
         {
             var bus = new Bus();
-            bus.RegisterHandlers(new PostMessageHandler(bus, new EventStore()));
+            bus.RegisterHandlers(new PostMessageHandler(bus));
             bus.RegisterHandlers(Presenter);
 
             var splittedMessage = message.Split(new [] {"->"}, StringSplitOptions.None);
