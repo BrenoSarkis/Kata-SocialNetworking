@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Security.Claims;
 using Kata.SocialNetworking.Infrastructure.Messaging;
 using Kata.SocialNetworking.Messages.Post;
 using NUnit.Framework;
