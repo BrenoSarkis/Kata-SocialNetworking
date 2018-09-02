@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="InputParser.cs" />
+    <Compile Include="InputTranslator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserController.cs" />
+    <Compile Include="UserViewModel.cs" />
     <Compile Include="WallPresenter.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -59,6 +61,10 @@
     <ProjectReference Include="..\Kata.SocialNetworking.Messages\Kata.SocialNetworking.Messages.csproj">
       <Project>{5AB4C73F-7639-4B9F-BFDB-0D0D055E691C}</Project>
       <Name>Kata.SocialNetworking.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kata.SocialNetworking\Kata.SocialNetworking.csproj">
+      <Project>{06683EB8-7205-40D8-B929-2EBFBEEBA796}</Project>
+      <Name>Kata.SocialNetworking</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
