@@ -21,13 +21,4 @@ namespace Kata.SocialNetworking.Client.UnitTests
             Assert.That(((PostMessage)command).Message, Is.EqualTo("hello!"));
         }
     }
-
-    public class InputParser
-    {
-        public ICommand Parse(string input)
-        {
-            var splittedInput = input.Split(new[] {"->"}, StringSplitOptions.None).Select(i => i.Trim()).ToArray();
-            return new PostMessage(userName: splittedInput[0], message: splittedInput[1]);
-        }
-    }
 }
