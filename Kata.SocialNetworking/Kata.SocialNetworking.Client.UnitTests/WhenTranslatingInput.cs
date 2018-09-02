@@ -1,4 +1,6 @@
-﻿using Kata.SocialNetworking.Messages.Post;
+﻿using Kata.SocialNetworking.Infrastructure.Messaging;
+using Kata.SocialNetworking.Messages.Post;
+using NSubstitute;
 using NUnit.Framework;
 
 namespace Kata.SocialNetworking.Client.UnitTests
@@ -7,15 +9,16 @@ namespace Kata.SocialNetworking.Client.UnitTests
     public class WhenTranslatingInput
     {
         [Test]
-        public void SuccessfullyParsesASendCommand()
+        public void TranslatesIntoPostMessage()
         {
-            //var inputParser = new InputTranslator();
+            var controller = Substitute.For<UserController>(Substitute.For<IBus>());
 
-            //var command = inputParser.Parse("Alice -> hello!");
+            var inputTranslator = new InputTranslator(controller);
 
-            //Assert.That(command, Is.TypeOf<PostMessage>());
-            //Assert.That(((PostMessage)command).UserName, Is.EqualTo("Alice"));
-            //Assert.That(((PostMessage)command).Message, Is.EqualTo("hello!"));
+            inputTranslator.TranslateIntoCommand("Alice -> hello!");
+
+            controller.Received().PostMessage(Arg.Is<PostMessage>(postMessage => postMessage.UserName == "Alice" 
+                                                                              && postMessage.Message == "hello!"));
         }
     }
 }

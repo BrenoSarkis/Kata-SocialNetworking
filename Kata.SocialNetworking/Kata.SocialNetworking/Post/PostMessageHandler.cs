@@ -7,9 +7,9 @@ namespace Kata.SocialNetworking.Post
 {
     public class PostMessageHandler : IHandleMessagesOf<PostMessage>
     {
-        private readonly Bus bus;
+        private readonly IBus bus;
 
-        public PostMessageHandler(Bus bus)
+        public PostMessageHandler(IBus bus)
         {
             this.bus = bus;
         }

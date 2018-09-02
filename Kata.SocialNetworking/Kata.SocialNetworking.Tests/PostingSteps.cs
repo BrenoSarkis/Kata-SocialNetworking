@@ -10,14 +10,12 @@ using TechTalk.SpecFlow;
 namespace Kata.SocialNetworking.Tests
 {
     [Binding]
-    public class PostingSteps
+    public class PostingSteps : UserFeatures
     {
-        public UserController UserController { get; } = new UserController();
-
         [Given(@"I post the message ""(.*)""")]
         public void GivenIPostTheMessage(string command)
         {
-            UserController.PostMessage(command);
+            InputTranslator.TranslateIntoCommand(command);
         }
 
         [When(@"I visit ""(.*)""'s wall")]

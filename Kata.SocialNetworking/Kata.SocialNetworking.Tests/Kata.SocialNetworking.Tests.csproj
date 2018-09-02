@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="PostingSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserFeatures.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
