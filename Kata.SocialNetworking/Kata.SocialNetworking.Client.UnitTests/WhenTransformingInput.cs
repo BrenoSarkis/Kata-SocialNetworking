@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using Kata.SocialNetworking.Infrastructure.Messaging;
-using Kata.SocialNetworking.Messages.Post;
+﻿using Kata.SocialNetworking.Messages.Post;
 using NUnit.Framework;
 
 namespace Kata.SocialNetworking.Client.UnitTests
