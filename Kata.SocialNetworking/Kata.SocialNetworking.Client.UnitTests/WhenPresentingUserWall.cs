@@ -1,4 +1,5 @@
-﻿using Kata.SocialNetworking.Messages.Post;
+﻿using System;
+using Kata.SocialNetworking.Messages.Post;
 using NUnit.Framework;
 
 namespace Kata.SocialNetworking.Client.UnitTests
@@ -11,6 +12,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
         private string anotherMessage;
         private string yetAnotherMessage;
         private WallPresenter wallPresenter;
+        private UserViewModel viewModel;
         private FakeClock fakeClock;
 
         [SetUp]
@@ -21,7 +23,8 @@ namespace Kata.SocialNetworking.Client.UnitTests
             anotherMessage = "a different message!";
             yetAnotherMessage = "yet a different message.";
             fakeClock = new FakeClock();
-            wallPresenter = new WallPresenter(fakeClock);
+            viewModel = new UserViewModel();
+            wallPresenter = new WallPresenter(fakeClock, viewModel);
         }
 
         [Test]
@@ -62,7 +65,8 @@ namespace Kata.SocialNetworking.Client.UnitTests
                 wallPresenter.Handle(post);
             }
 
-            return wallPresenter.PresentWallFor(userName);
+            wallPresenter.PrepareWallFor(userName);
+            return wallPresenter.ViewModel.Output.Split(new[] {Environment.NewLine},StringSplitOptions.None);
         }
     }
 }

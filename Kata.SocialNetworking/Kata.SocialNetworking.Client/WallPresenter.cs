@@ -6,14 +6,21 @@ using Kata.SocialNetworking.Messages.Post;
 
 namespace Kata.SocialNetworking.Client
 {
-    public class WallPresenter : IHandleMessagesOf<MessagePosted>
+    public class WallPresenter : IPresentWalls, IHandleMessagesOf<MessagePosted>
     {
         private readonly IClock clock;
         private readonly Dictionary<string, List<string>> walls = new Dictionary<string, List<string>>();
 
-        public WallPresenter(IClock clock)
+        public WallPresenter(IClock clock, UserViewModel viewModel)
         {
             this.clock = clock;
+            ViewModel = viewModel;
+        }
+
+        public UserViewModel ViewModel { get; }
+        public void PrepareWallFor(string userName)
+        {
+            ViewModel.Output = String.Join(Environment.NewLine, walls[userName].ToArray());
         }
 
         public void Handle(MessagePosted messagePosted)
@@ -49,10 +56,12 @@ namespace Kata.SocialNetworking.Client
         {
             return value != 1 ? "s" : "";
         }
+    }
 
-        public string[] PresentWallFor(string userName)
-        {
-            return walls[userName].ToArray();
-        }
+    public interface IPresentWalls
+    {
+        void PrepareWallFor(string userName);
+
+        UserViewModel ViewModel { get; }
     }
 }

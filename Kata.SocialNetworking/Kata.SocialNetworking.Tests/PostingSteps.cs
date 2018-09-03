@@ -13,21 +13,21 @@ namespace Kata.SocialNetworking.Tests
     public class PostingSteps : UserFeatures
     {
         [Given(@"I post the message ""(.*)""")]
-        public void GivenIPostTheMessage(string command)
+        public void GivenIPostTheMessage(string input)
         {
-            InputTranslator.TranslateIntoCommand(command);
+            InputTranslator.TranslateIntoAction(input);
         }
 
         [When(@"I visit ""(.*)""'s wall")]
-        public void WhenIVisitSWall(string userName)
+        public void WhenIVisitSWall(string input)
         {
-            UserController.PrepareWallFor(userName);
+            InputTranslator.TranslateIntoAction(input);
         }
 
         [Then(@"I should see ""(.*)""")]
         public void ThenIShouldSee(string expectedMessage)
         {
-            Assert.That(UserController.ViewModel.Output, Is.EqualTo(expectedMessage));
+            Assert.That(WallPresenter.ViewModel.Output, Is.EqualTo(expectedMessage));
         }
     }
 }

@@ -10,14 +10,13 @@ namespace Kata.SocialNetworking.Tests
     {
         public UserFeatures()
         {
-            WallPresenter = new WallPresenter(Clock);
+            WallPresenter = new WallPresenter(Clock, new UserViewModel());
             UserController = new UserController(Bus);
-            UserController.Presenter = WallPresenter;
 
             Bus.RegisterHandlers(new PostMessageHandler(Bus));
             Bus.RegisterHandlers(WallPresenter);
 
-            InputTranslator = new InputTranslator(UserController);
+            InputTranslator = new InputTranslator(UserController, WallPresenter);
         }
 
         public IBus Bus { get; } = new Bus();

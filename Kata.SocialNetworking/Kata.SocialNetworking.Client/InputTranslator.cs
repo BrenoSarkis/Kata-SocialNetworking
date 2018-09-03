@@ -8,16 +8,25 @@ namespace Kata.SocialNetworking.Client
     public class InputTranslator
     {
         private readonly UserController controller;
+        private readonly IPresentWalls wallPresenter;
 
-        public InputTranslator(UserController controller)
+        public InputTranslator(UserController controller, IPresentWalls wallPresenter)
         {
             this.controller = controller;
+            this.wallPresenter = wallPresenter;
         }
 
-        public void TranslateIntoCommand(string input)
+        public void TranslateIntoAction(string input)
         {
             var splittedInput = input.Split(new[] { "->" }, StringSplitOptions.None).Select(i => i.Trim()).ToArray();
-            this.controller.PostMessage(new PostMessage(userName: splittedInput[0], message: splittedInput[1]));
+            if (splittedInput.Length == 2)
+            {
+                controller.PostMessage(new PostMessage(userName: splittedInput[0], message: splittedInput[1]));
+            }
+            else
+            {
+                wallPresenter.PrepareWallFor(input);
+            }
         }
     }
 }

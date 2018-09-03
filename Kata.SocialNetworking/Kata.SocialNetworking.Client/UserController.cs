@@ -27,10 +27,5 @@ namespace Kata.SocialNetworking.Client
         {
             bus.SendCommand(postMessage);
         }
-
-        public void PrepareWallFor(string userName)
-        {
-            ViewModel.Output = String.Join(Environment.NewLine, Presenter.PresentWallFor(userName));
-        }
     }
 }
