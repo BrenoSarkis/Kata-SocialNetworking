@@ -11,16 +11,24 @@ namespace Kata.SocialNetworking.Client
         private readonly IClock clock;
         private readonly Dictionary<string, List<string>> walls = new Dictionary<string, List<string>>();
 
+        public UserViewModel ViewModel { get; }
+
         public WallPresenter(IClock clock, UserViewModel viewModel)
         {
             this.clock = clock;
             ViewModel = viewModel;
         }
 
-        public UserViewModel ViewModel { get; }
         public void PrepareWallFor(string userName)
         {
-            ViewModel.Output = String.Join(Environment.NewLine, walls[userName].ToArray());
+            if (walls.ContainsKey(userName))
+            {
+                ViewModel.Output = String.Join(Environment.NewLine, walls[userName].ToArray());
+            }
+            else
+            {
+                ViewModel.Output = String.Empty;
+            }
         }
 
         public void Handle(MessagePosted messagePosted)

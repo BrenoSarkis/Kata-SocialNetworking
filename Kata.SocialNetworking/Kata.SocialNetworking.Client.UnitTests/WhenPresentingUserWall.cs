@@ -58,6 +58,14 @@ namespace Kata.SocialNetworking.Client.UnitTests
             Assert.That(userWall[2], Is.EqualTo("Alice - yet a different message. (2 minutes ago)"));
         }
 
+        [Test]
+        public void PresentsBlankWallWhenThereIsNoPostsForUser()
+        {
+            wallPresenter.PrepareWallFor("ANewUserName");
+
+            Assert.That(wallPresenter.ViewModel.Output, Is.EqualTo(String.Empty));
+        }
+
         private string[] GetWallBasedOnPosts(string userName, params MessagePosted[] posts)
         {
             foreach (var post in posts)
