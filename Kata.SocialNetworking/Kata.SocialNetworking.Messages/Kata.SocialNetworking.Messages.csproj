@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Follow\FollowUser.cs" />
+    <Compile Include="Follow\UserFollowed.cs" />
     <Compile Include="Post\MessagePosted.cs" />
     <Compile Include="Post\PostMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
