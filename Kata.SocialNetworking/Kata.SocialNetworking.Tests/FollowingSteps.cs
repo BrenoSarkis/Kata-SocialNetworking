@@ -3,7 +3,7 @@
 namespace Kata.SocialNetworking.Tests
 {
     [Binding]
-    public class FollowSteps 
+    public class FollowingSteps 
     {
         [Given(@"User posts message: ""(.*)""")]
         public void GivenUserPostsMessage(string p0)

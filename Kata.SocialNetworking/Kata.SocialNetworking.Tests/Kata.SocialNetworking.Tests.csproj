@@ -66,12 +66,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Follow.feature.cs">
+    <Compile Include="Following.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Follow.feature</DependentUpon>
+      <DependentUpon>Following.feature</DependentUpon>
     </Compile>
-    <Compile Include="FollowSteps.cs" />
+    <Compile Include="FollowingSteps.cs" />
     <Compile Include="Posting.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -83,9 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Follow.feature">
+    <None Include="Following.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>Follow.feature.cs</LastGenOutput>
+      <LastGenOutput>Following.feature.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
     <None Include="Posting.feature">

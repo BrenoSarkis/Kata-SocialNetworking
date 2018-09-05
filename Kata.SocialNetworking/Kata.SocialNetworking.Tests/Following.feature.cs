@@ -18,20 +18,20 @@ namespace Kata.SocialNetworking.Tests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.2.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Follow")]
-    public partial class FollowFeature
+    [NUnit.Framework.DescriptionAttribute("Following")]
+    public partial class FollowingFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "Follow.feature"
+#line 1 "Following.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Follow", "\tIn order to see other users posts\r\n\tAs a user\r\n\tI want to subscribe to their pos" +
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Following", "\tIn order to see other users posts\r\n\tAs a user\r\n\tI want to subscribe to their pos" +
                     "ts", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
@@ -65,10 +65,10 @@ namespace Kata.SocialNetworking.Tests
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Follow an User")]
-        public virtual void FollowAnUser()
+        [NUnit.Framework.DescriptionAttribute("Following an User")]
+        public virtual void FollowingAnUser()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Follow an User", ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Following an User", ((string[])(null)));
 #line 6
 this.ScenarioSetup(scenarioInfo);
 #line 7
