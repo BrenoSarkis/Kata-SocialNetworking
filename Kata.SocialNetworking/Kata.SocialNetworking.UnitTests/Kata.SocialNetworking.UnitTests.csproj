@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenHandlingPostMessageCommand.cs" />
+    <Compile Include="WhenHandlingUserFollowCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
