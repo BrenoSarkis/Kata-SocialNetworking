@@ -1,26 +1,28 @@
-﻿using TechTalk.SpecFlow;
+﻿using NUnit.Framework;
+using TechTalk.SpecFlow;
 
 namespace Kata.SocialNetworking.Tests
 {
     [Binding]
-    public class FollowingSteps 
+    public class FollowingSteps : UserFeatures
     {
         [Given(@"User posts message: ""(.*)""")]
-        public void GivenUserPostsMessage(string p0)
+        public void GivenUserPostsMessage(string postInput)
         {
-            ScenarioContext.Current.Pending();
+            InputTranslator.TranslateIntoAction(postInput);
         }
 
         [When(@"""(.*)"" follows ""(.*)""")]
-        public void WhenFollows(string p0, string p1)
+        public void WhenFollows(string user, string anotherUser)
         {
-            ScenarioContext.Current.Pending();
+            InputTranslator.TranslateIntoAction($"{user} follows {anotherUser}");
         }
 
         [Then(@"""(.*)""'s wall should contain: ""(.*)""")]
-        public void ThenSWallShouldContain(string p0, string p1)
+        public void ThenSWallShouldContain(string userWallInput, string wallContent)
         {
-            ScenarioContext.Current.Pending();
+            InputTranslator.TranslateIntoAction(userWallInput);
+            Assert.That(WallPresenter.ViewModel.Output, Is.EqualTo(wallContent));
         }
     }
 }
