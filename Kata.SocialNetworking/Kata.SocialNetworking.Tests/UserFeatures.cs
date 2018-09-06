@@ -2,6 +2,8 @@
 using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Clock;
 using Kata.SocialNetworking.Infrastructure.Messaging;
+using Kata.SocialNetworking.Messages.Follow;
+using Kata.SocialNetworking.Messages.Post;
 using Kata.SocialNetworking.Post;
 
 namespace Kata.SocialNetworking.Tests
@@ -14,7 +16,8 @@ namespace Kata.SocialNetworking.Tests
             UserController = new UserController(Bus);
 
             Bus.RegisterHandlers(new PostMessageHandler(Bus));
-            Bus.RegisterHandlers(WallPresenter);
+            Bus.RegisterHandlers((IHandleMessagesOf<MessagePosted>)WallPresenter);
+            Bus.RegisterHandlers((IHandleMessagesOf<UserFollowed>)WallPresenter);
 
             InputTranslator = new InputTranslator(UserController, WallPresenter);
         }

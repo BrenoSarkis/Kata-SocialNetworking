@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Kata.SocialNetworking.Infrastructure.Clock;
 using Kata.SocialNetworking.Infrastructure.Messaging;
+using Kata.SocialNetworking.Messages.Follow;
 using Kata.SocialNetworking.Messages.Post;
 
 namespace Kata.SocialNetworking.Client
 {
-    public class WallPresenter : IPresentWalls, IHandleMessagesOf<MessagePosted>
+    public class WallPresenter : IPresentWalls, IHandleMessagesOf<MessagePosted>, IHandleMessagesOf<UserFollowed>
     {
         private readonly IClock clock;
         private readonly Dictionary<string, List<string>> walls = new Dictionary<string, List<string>>();
+        private readonly Dictionary<string, string> followers = new Dictionary<string, string>();
 
         public UserViewModel ViewModel { get; }
 
@@ -21,14 +24,29 @@ namespace Kata.SocialNetworking.Client
 
         public void PrepareWallFor(string userName)
         {
+            string wall = "";
+
             if (walls.ContainsKey(userName))
             {
-                ViewModel.Output = String.Join(Environment.NewLine, walls[userName].ToArray());
+                bool userIsFollowingAnyone = followers.ContainsKey(userName);
+
+                if (userIsFollowingAnyone)
+                {
+                    var followedUser = followers[userName];
+                    var followedUsersWall = walls[followedUser];
+                    var currentUsersWall = walls[userName].ToArray();
+
+                    var aggregatedMessages = currentUsersWall.Concat(followedUsersWall);
+
+                    wall = FormatPosts(aggregatedMessages);
+                }
+                else
+                {
+                    wall = FormatPosts(walls[userName]);
+                }
             }
-            else
-            {
-                ViewModel.Output = String.Empty;
-            }
+
+            ViewModel.Output = wall;
         }
 
         public void Handle(MessagePosted messagePosted)
@@ -63,6 +81,16 @@ namespace Kata.SocialNetworking.Client
         private string FormatTime(int value)
         {
             return value != 1 ? "s" : "";
+        }
+
+        private string FormatPosts(IEnumerable<string> posts)
+        {
+            return String.Join(Environment.NewLine, posts);
+        }
+
+        public void Handle(UserFollowed message)
+        {
+            followers.Add(message.SourceUser,  message.TargetUser);
         }
     }
 }
