@@ -16,7 +16,6 @@ namespace Kata.SocialNetworking.Client.UnitTests
         {
             var presenter = Substitute.For<IPresentWalls>();
             var controller = Substitute.For<UserController>(Substitute.For<IBus>());
-
             var inputTranslator = new InputTranslator(controller, presenter);
 
             inputTranslator.TranslateIntoAction("Alice -> hello!");
@@ -30,7 +29,6 @@ namespace Kata.SocialNetworking.Client.UnitTests
         {
             var controller = Substitute.For<UserController>(Substitute.For<IBus>());
             var presenter = Substitute.For<IPresentWalls>();
-
             var inputTranslator = new InputTranslator(controller, presenter);
 
             inputTranslator.TranslateIntoAction(UserName);
