@@ -10,6 +10,9 @@ namespace Kata.SocialNetworking.Client.UnitTests
     [TestFixture]
     public class WhenTranslatingInput
     {
+        private UserController controller = Substitute.For<UserController>(Substitute.For<IBus>());
+        private IPresentWalls presenter = Substitute.For<IPresentWalls>();
+
         private const string UserName = "Alice";
         private const string AnotherUserName = "Bob";
         private const string Message = "hello!";
@@ -17,9 +20,6 @@ namespace Kata.SocialNetworking.Client.UnitTests
         [Test]
         public void TranslatesIntoPostMessage()
         {
-            var presenter = Substitute.For<IPresentWalls>();
-            var controller = Substitute.For<IUserController>();
-            
             var inputTranslator = new InputTranslator(controller, presenter);
 
             inputTranslator.TranslateIntoAction($"{UserName} -> {Message}");
@@ -31,9 +31,6 @@ namespace Kata.SocialNetworking.Client.UnitTests
         [Test]
         public void TranslatesIntoGetWall()
         {
-            var controller = Substitute.For<UserController>(Substitute.For<IBus>());
-            var presenter = Substitute.For<IPresentWalls>();
-
             var inputTranslator = new InputTranslator(controller, presenter);
 
             inputTranslator.TranslateIntoAction(UserName);
@@ -44,9 +41,6 @@ namespace Kata.SocialNetworking.Client.UnitTests
         [Test]
         public void TranslatesIntoFollowing()
         {
-            var controller = Substitute.For<IUserController>();
-            var presenter = Substitute.For<IPresentWalls>();
-
             var inputTranslator = new InputTranslator(controller, presenter);
 
             inputTranslator.TranslateIntoAction($"{UserName} follows {AnotherUserName}");
