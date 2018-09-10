@@ -85,6 +85,21 @@ namespace Kata.SocialNetworking.Client.UnitTests
             Assert.That(alicesWall[1], Is.EqualTo("Bob - A message from Bob (1 second ago)"));
         }
 
+        [Test]
+        public void ShowsOnlyMessagesFromTheFollowedUser()
+        {
+            var aliceFollowedBob = new UserFollowed("Alice", "Bob");
+            var bobsPost = new MessagePosted("Bob", "A message from Bob", fakeClock.HypoteticalNow);
+
+            wallPresenter.Handle(aliceFollowedBob);
+            wallPresenter.Handle(bobsPost);
+
+            wallPresenter.PrepareWallFor(userName);
+            var alicesWall = wallPresenter.ViewModel.Output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+
+            Assert.That(alicesWall[0], Is.EqualTo("Bob - A message from Bob (0 seconds ago)"));
+        }
+
         private string[] GetWallBasedOnPosts(string userName, params MessagePosted[] posts)
         {
             foreach (var post in posts)

@@ -26,27 +26,34 @@ namespace Kata.SocialNetworking.Client
         {
             string wall = "";
 
-            if (walls.ContainsKey(userName))
+            IniatializeWall(userName);
+
+            bool userIsFollowingAnyone = followers.ContainsKey(userName);
+
+            if (userIsFollowingAnyone)
             {
-                bool userIsFollowingAnyone = followers.ContainsKey(userName);
+                var followedUser = followers[userName];
+                var followedUsersWall = walls[followedUser];
+                var currentUsersWall = walls[userName].ToArray();
 
-                if (userIsFollowingAnyone)
-                {
-                    var followedUser = followers[userName];
-                    var followedUsersWall = walls[followedUser];
-                    var currentUsersWall = walls[userName].ToArray();
+                var aggregatedMessages = currentUsersWall.Concat(followedUsersWall);
 
-                    var aggregatedMessages = currentUsersWall.Concat(followedUsersWall);
-
-                    wall = FormatPosts(aggregatedMessages);
-                }
-                else
-                {
-                    wall = FormatPosts(walls[userName]);
-                }
+                wall = FormatPosts(aggregatedMessages);
+            }
+            else
+            {
+                wall = FormatPosts(walls[userName]);
             }
 
             ViewModel.Output = wall;
+        }
+
+        private void IniatializeWall(string userName)
+        {
+            if (!walls.ContainsKey(userName))
+            {
+                walls.Add(userName, new List<string>());
+            }
         }
 
         public void Handle(MessagePosted messagePosted)
@@ -90,7 +97,7 @@ namespace Kata.SocialNetworking.Client
 
         public void Handle(UserFollowed message)
         {
-            followers.Add(message.SourceUser,  message.TargetUser);
+            followers.Add(message.SourceUser, message.TargetUser);
         }
     }
 }
