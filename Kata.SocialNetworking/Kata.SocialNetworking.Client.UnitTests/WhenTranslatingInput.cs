@@ -21,7 +21,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
             
             var inputTranslator = new InputTranslator(controller, presenter);
 
-            inputTranslator.TranslateIntoAction($"{UserName} -> {Message}!");
+            inputTranslator.TranslateIntoAction($"{UserName} -> {Message}");
 
             controller.Received().PostMessage(Arg.Is<PostMessage>(postMessage => postMessage.UserName == UserName 
                                                                               && postMessage.Message == Message));
