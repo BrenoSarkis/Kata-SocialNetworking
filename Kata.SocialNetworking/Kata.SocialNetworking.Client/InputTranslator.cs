@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Kata.SocialNetworking.Infrastructure.Messaging;
+using Kata.SocialNetworking.Messages.Follow;
 using Kata.SocialNetworking.Messages.Post;
 
 namespace Kata.SocialNetworking.Client
@@ -22,6 +23,11 @@ namespace Kata.SocialNetworking.Client
             if (splittedInput.Length == 2)
             {
                 controller.PostMessage(new PostMessage(userName: splittedInput[0], message: splittedInput[1]));
+            }
+            else if (input.Contains("follows"))
+           {
+                var splitTheFollow = input.Split(new[] {"follows"}, StringSplitOptions.RemoveEmptyEntries).Select(i => i.Trim()).ToArray();
+                controller.FollowUser(new FollowUser(sourceUser: splitTheFollow[0], targetUser: splitTheFollow[1]));
             }
             else
             {

@@ -11,6 +11,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
     public class WhenTranslatingInput
     {
         private const string UserName = "Alice";
+        private const string AnotherUserName = "Bob";
         private const string Message = "hello!";
 
         [Test]
@@ -38,6 +39,20 @@ namespace Kata.SocialNetworking.Client.UnitTests
             inputTranslator.TranslateIntoAction(UserName);
 
             presenter.Received().PrepareWallFor(Arg.Is<string>(userName => userName == UserName));
+        }
+
+        [Test]
+        public void TranslatesIntoFollowing()
+        {
+            var controller = Substitute.For<IUserController>();
+            var presenter = Substitute.For<IPresentWalls>();
+
+            var inputTranslator = new InputTranslator(controller, presenter);
+
+            inputTranslator.TranslateIntoAction($"{UserName} follows {AnotherUserName}");
+
+            controller.Received().FollowUser(Arg.Is<FollowUser>(follow => follow.SourceUser == UserName
+                                                                       && follow.TargetUser == AnotherUserName));
         }
     }
 }
