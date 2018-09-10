@@ -13,7 +13,6 @@ namespace Kata.SocialNetworking.Client
         private readonly IClock clock;
         private readonly Dictionary<string, List<string>> walls = new Dictionary<string, List<string>>();
         private readonly Dictionary<string, string> followers = new Dictionary<string, string>();
-
         public UserViewModel ViewModel { get; }
 
         public WallPresenter(IClock clock, UserViewModel viewModel)
