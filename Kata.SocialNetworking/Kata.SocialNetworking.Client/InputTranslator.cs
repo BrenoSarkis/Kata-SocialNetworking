@@ -8,6 +8,8 @@ namespace Kata.SocialNetworking.Client
 {
     public class InputTranslator
     {
+        private const string PostMessageIdentifier = "->";
+        private const string FollowUserIdentifier = "follows";
         private readonly IUserController controller;
         private readonly IPresentWalls wallPresenter;
 
@@ -19,20 +21,25 @@ namespace Kata.SocialNetworking.Client
 
         public void TranslateIntoAction(string input)
         {
-            var splittedInput = input.Split(new[] { "->" }, StringSplitOptions.None).Select(i => i.Trim()).ToArray();
-            if (splittedInput.Length == 2)
+            if (input.Contains(PostMessageIdentifier))
             {
+                var splittedInput = SplitInputOn(input, PostMessageIdentifier); 
                 controller.PostMessage(new PostMessage(userName: splittedInput[0], message: splittedInput[1]));
             }
-            else if (input.Contains("follows"))
-           {
-                var splitTheFollow = input.Split(new[] {"follows"}, StringSplitOptions.RemoveEmptyEntries).Select(i => i.Trim()).ToArray();
-                controller.FollowUser(new FollowUser(sourceUser: splitTheFollow[0], targetUser: splitTheFollow[1]));
+            else if (input.Contains(FollowUserIdentifier))
+            {
+               var splittedInput = SplitInputOn(input, FollowUserIdentifier);
+                controller.FollowUser(new FollowUser(sourceUser: splittedInput[0], targetUser: splittedInput[1]));
             }
             else
             {
                 wallPresenter.PrepareWallFor(input);
             }
+        }
+
+        private string[] SplitInputOn(string input, string toSplit)
+        {
+            return input.Split(new[] { toSplit }, StringSplitOptions.None).Select(i => i.Trim()).ToArray();
         }
     }
 }
