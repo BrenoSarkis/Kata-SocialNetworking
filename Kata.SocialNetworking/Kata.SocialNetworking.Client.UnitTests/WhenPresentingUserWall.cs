@@ -68,7 +68,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
         }
 
         [Test]
-        public void WhenFollowingAnUser_AggregatesTheirMessagesToTheSourceUsersWall()
+        public void AggregatesTheirMessagesToTheSourceUsersWall()
         {
             var alicesPost = new MessagePosted("Alice", "A message from Alice", fakeClock.HypoteticalNow);
             var aliceFollowedBob = new UserFollowed("Alice", "Bob");
