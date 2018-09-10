@@ -11,7 +11,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
     public class WhenTranslatingInput
     {
         private const string UserName = "Alice";
-        private const string AnotherUserName = "Bob";
+        private const string Message = "hello!";
 
         [Test]
         public void TranslatesIntoPostMessage()
@@ -21,10 +21,10 @@ namespace Kata.SocialNetworking.Client.UnitTests
             
             var inputTranslator = new InputTranslator(controller, presenter);
 
-            inputTranslator.TranslateIntoAction("Alice -> hello!");
+            inputTranslator.TranslateIntoAction($"{UserName} -> {Message}!");
 
             controller.Received().PostMessage(Arg.Is<PostMessage>(postMessage => postMessage.UserName == UserName 
-                                                                              && postMessage.Message == "hello!"));
+                                                                              && postMessage.Message == Message));
         }
 
         [Test]
@@ -39,7 +39,5 @@ namespace Kata.SocialNetworking.Client.UnitTests
 
             presenter.Received().PrepareWallFor(Arg.Is<string>(userName => userName == UserName));
         }
-
-
     }
 }
