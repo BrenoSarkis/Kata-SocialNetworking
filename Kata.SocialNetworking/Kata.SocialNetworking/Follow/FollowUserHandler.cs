@@ -6,9 +6,9 @@ namespace Kata.SocialNetworking.Follow
 {
     public class FollowUserHandler : IHandleMessagesOf<FollowUser>
     {
-        private Bus bus;
+        private IBus bus;
 
-        public FollowUserHandler(Bus bus)
+        public FollowUserHandler(IBus bus)
         {
             this.bus = bus;
         }

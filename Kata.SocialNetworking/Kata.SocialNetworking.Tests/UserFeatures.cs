@@ -1,4 +1,5 @@
 ﻿using Kata.SocialNetworking.Client;
+using Kata.SocialNetworking.Follow;
 using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Clock;
 using Kata.SocialNetworking.Infrastructure.Messaging;
@@ -16,6 +17,7 @@ namespace Kata.SocialNetworking.Tests
             UserController = new UserController(Bus);
 
             Bus.RegisterHandlers(new PostMessageHandler(Bus));
+            Bus.RegisterHandlers(new FollowUserHandler(Bus));
             Bus.RegisterHandlers((IHandleMessagesOf<MessagePosted>)WallPresenter);
             Bus.RegisterHandlers((IHandleMessagesOf<UserFollowed>)WallPresenter);
 
