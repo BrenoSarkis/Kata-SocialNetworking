@@ -1,5 +1,4 @@
-﻿using Kata.SocialNetworking.Infrastructure.Clock;
-using Kata.SocialNetworking.Infrastructure.Messaging;
+﻿using Kata.SocialNetworking.Infrastructure.Messaging;
 using Kata.SocialNetworking.Messages.Follow;
 using Kata.SocialNetworking.Messages.Post;
 using NSubstitute;
@@ -10,8 +9,8 @@ namespace Kata.SocialNetworking.Client.UnitTests
     [TestFixture]
     public class WhenTranslatingInput
     {
-        private UserController controller = Substitute.For<UserController>(Substitute.For<IBus>());
-        private IPresentWalls presenter = Substitute.For<IPresentWalls>();
+        private readonly UserController controller = Substitute.For<UserController>(Substitute.For<IBus>());
+        private readonly IPresentWalls presenter = Substitute.For<IPresentWalls>();
 
         private const string UserName = "Alice";
         private const string AnotherUserName = "Bob";
