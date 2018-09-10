@@ -1,5 +1,6 @@
 ﻿using Kata.SocialNetworking.Infrastructure.Clock;
 using Kata.SocialNetworking.Infrastructure.Messaging;
+using Kata.SocialNetworking.Messages.Follow;
 using Kata.SocialNetworking.Messages.Post;
 using NSubstitute;
 using NUnit.Framework;
@@ -10,13 +11,14 @@ namespace Kata.SocialNetworking.Client.UnitTests
     public class WhenTranslatingInput
     {
         private const string UserName = "Alice";
+        private const string AnotherUserName = "Bob";
 
         [Test]
         public void TranslatesIntoPostMessage()
         {
             var presenter = Substitute.For<IPresentWalls>();
-            var controller = Substitute.For<UserController>(Substitute.For<IBus>());
-
+            var controller = Substitute.For<IUserController>();
+            
             var inputTranslator = new InputTranslator(controller, presenter);
 
             inputTranslator.TranslateIntoAction("Alice -> hello!");
@@ -37,5 +39,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
 
             presenter.Received().PrepareWallFor(Arg.Is<string>(userName => userName == UserName));
         }
+
+
     }
 }

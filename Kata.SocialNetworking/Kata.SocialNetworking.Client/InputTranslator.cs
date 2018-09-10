@@ -7,10 +7,10 @@ namespace Kata.SocialNetworking.Client
 {
     public class InputTranslator
     {
-        private readonly UserController controller;
+        private readonly IUserController controller;
         private readonly IPresentWalls wallPresenter;
 
-        public InputTranslator(UserController controller, IPresentWalls wallPresenter)
+        public InputTranslator(IUserController controller, IPresentWalls wallPresenter)
         {
             this.controller = controller;
             this.wallPresenter = wallPresenter;
