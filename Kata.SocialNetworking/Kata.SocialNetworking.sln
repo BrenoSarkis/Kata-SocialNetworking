@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Messa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Client.UnitTests", "Kata.SocialNetworking.Client.UnitTests\Kata.SocialNetworking.Client.UnitTests.csproj", "{65DBE396-D4CC-491D-AAF0-4AA18812A2EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Boundaries", "Kata.SocialNetworking.Boundaries\Kata.SocialNetworking.Boundaries.csproj", "{79238D74-AE42-4358-9E94-1FF5C06F9D3C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{65DBE396-D4CC-491D-AAF0-4AA18812A2EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65DBE396-D4CC-491D-AAF0-4AA18812A2EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65DBE396-D4CC-491D-AAF0-4AA18812A2EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79238D74-AE42-4358-9E94-1FF5C06F9D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79238D74-AE42-4358-9E94-1FF5C06F9D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79238D74-AE42-4358-9E94-1FF5C06F9D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79238D74-AE42-4358-9E94-1FF5C06F9D3C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
