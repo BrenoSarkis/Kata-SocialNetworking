@@ -48,9 +48,7 @@
     <Compile Include="Exceptions\HandlerNotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Messaging\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Kata.SocialNetworking.Boundaries\Kata.SocialNetworking.Boundaries.csproj">
       <Project>{79238D74-AE42-4358-9E94-1FF5C06F9D3C}</Project>
