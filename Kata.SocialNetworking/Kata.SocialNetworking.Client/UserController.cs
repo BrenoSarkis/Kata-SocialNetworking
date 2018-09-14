@@ -1,14 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Kata.SocialNetworking.Boundaries.Messaging;
-using Kata.SocialNetworking.Infrastructure;
-using Kata.SocialNetworking.Infrastructure.Clock;
+﻿using Kata.SocialNetworking.Boundaries.Messaging;
 using Kata.SocialNetworking.Messages.Follow;
 using Kata.SocialNetworking.Messages.Post;
-using Kata.SocialNetworking.Post;
 
 namespace Kata.SocialNetworking.Client
 {
