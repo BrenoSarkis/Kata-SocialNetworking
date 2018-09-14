@@ -1,5 +1,5 @@
-﻿using Kata.SocialNetworking.Infrastructure.Exceptions;
-using Kata.SocialNetworking.Infrastructure.Messaging;
+﻿using Kata.SocialNetworking.Boundaries.Messaging;
+using Kata.SocialNetworking.Infrastructure.Exceptions;
 using NSubstitute;
 using NUnit.Framework;
 

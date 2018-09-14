@@ -1,4 +1,4 @@
-﻿using Kata.SocialNetworking.Infrastructure.Messaging;
+﻿using Kata.SocialNetworking.Boundaries.Messaging;
 using Kata.SocialNetworking.Messages.Follow;
 using Kata.SocialNetworking.Messages.Post;
 using NSubstitute;

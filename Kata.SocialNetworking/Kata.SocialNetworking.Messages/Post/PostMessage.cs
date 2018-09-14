@@ -1,4 +1,4 @@
-﻿using Kata.SocialNetworking.Infrastructure.Messaging;
+﻿using Kata.SocialNetworking.Boundaries.Messaging;
 
 namespace Kata.SocialNetworking.Messages.Post
 {

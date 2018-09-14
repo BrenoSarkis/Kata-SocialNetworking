@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Kata.SocialNetworking.Boundaries.Messaging;
 using Kata.SocialNetworking.Infrastructure.Exceptions;
-using Kata.SocialNetworking.Infrastructure.Messaging;
 
 namespace Kata.SocialNetworking.Infrastructure
 {

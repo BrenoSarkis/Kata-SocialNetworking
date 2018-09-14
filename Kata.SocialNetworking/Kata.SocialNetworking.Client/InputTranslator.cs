@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using Kata.SocialNetworking.Infrastructure.Messaging;
 using Kata.SocialNetworking.Messages.Follow;
 using Kata.SocialNetworking.Messages.Post;
 

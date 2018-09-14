@@ -1,8 +1,8 @@
-﻿using Kata.SocialNetworking.Client;
+﻿using Kata.SocialNetworking.Boundaries.Messaging;
+using Kata.SocialNetworking.Client;
 using Kata.SocialNetworking.Follow;
 using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Infrastructure.Clock;
-using Kata.SocialNetworking.Infrastructure.Messaging;
 using Kata.SocialNetworking.Messages.Follow;
 using Kata.SocialNetworking.Messages.Post;
 using Kata.SocialNetworking.Post;

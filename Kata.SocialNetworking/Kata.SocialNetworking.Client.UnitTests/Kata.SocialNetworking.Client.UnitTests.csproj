@@ -66,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Kata.SocialNetworking.Boundaries\Kata.SocialNetworking.Boundaries.csproj">
+      <Project>{79238D74-AE42-4358-9E94-1FF5C06F9D3C}</Project>
+      <Name>Kata.SocialNetworking.Boundaries</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kata.SocialNetworking.Client\Kata.SocialNetworking.Client.csproj">
       <Project>{49CC562C-1A50-4CA3-81AC-5ED8A035E832}</Project>
       <Name>Kata.SocialNetworking.Client</Name>

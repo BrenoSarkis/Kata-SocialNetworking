@@ -1,4 +1,5 @@
-﻿namespace Kata.SocialNetworking.Infrastructure.Messaging
+﻿
+namespace Kata.SocialNetworking.Boundaries.Messaging
 {
     public interface IBus
     {

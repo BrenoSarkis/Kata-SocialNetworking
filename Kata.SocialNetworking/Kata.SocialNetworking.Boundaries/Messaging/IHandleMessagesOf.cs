@@ -1,4 +1,4 @@
-﻿namespace Kata.SocialNetworking.Infrastructure.Messaging
+﻿namespace Kata.SocialNetworking.Boundaries.Messaging
 {
     public interface IHandleMessagesOf<TMessage> where TMessage : IMessage
     {
