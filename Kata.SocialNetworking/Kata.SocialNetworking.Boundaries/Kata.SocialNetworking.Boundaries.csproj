@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clock\IClock.cs" />
     <Compile Include="Messaging\IBus.cs" />
     <Compile Include="Messaging\ICommand.cs" />
     <Compile Include="Messaging\IEvent.cs" />

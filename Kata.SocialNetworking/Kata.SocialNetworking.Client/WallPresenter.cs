@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Kata.SocialNetworking.Boundaries.Clock;
 using Kata.SocialNetworking.Boundaries.Messaging;
 using Kata.SocialNetworking.Infrastructure.Clock;
 using Kata.SocialNetworking.Messages.Follow;

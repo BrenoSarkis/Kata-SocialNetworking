@@ -1,4 +1,5 @@
 ﻿using System;
+using Kata.SocialNetworking.Boundaries.Clock;
 
 namespace Kata.SocialNetworking.Infrastructure.Clock
 {

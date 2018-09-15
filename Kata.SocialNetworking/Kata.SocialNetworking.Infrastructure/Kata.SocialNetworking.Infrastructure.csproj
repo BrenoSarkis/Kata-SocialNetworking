@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Bus.cs" />
     <Compile Include="Clock\Clock.cs" />
-    <Compile Include="Clock\IClock.cs" />
     <Compile Include="Exceptions\HandlerAlreadyRegisteredException.cs" />
     <Compile Include="Exceptions\HandlerNotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Kata.SocialNetworking.Infrastructure.Clock
+namespace Kata.SocialNetworking.Boundaries.Clock
 {
     public interface IClock
     {

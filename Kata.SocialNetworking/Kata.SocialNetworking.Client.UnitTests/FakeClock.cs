@@ -1,4 +1,5 @@
 ﻿using System;
+using Kata.SocialNetworking.Boundaries.Clock;
 using Kata.SocialNetworking.Infrastructure.Clock;
 
 namespace Kata.SocialNetworking.Client.UnitTests
