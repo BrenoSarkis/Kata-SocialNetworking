@@ -1,13 +1,7 @@
-﻿using Kata.SocialNetworking.Client;
-using System;
-using Kata.SocialNetworking.Infrastructure;
-using Kata.SocialNetworking.Infrastructure.Clock;
-using Kata.SocialNetworking.Messages.Post;
-using Kata.SocialNetworking.Post;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using TechTalk.SpecFlow;
 
-namespace Kata.SocialNetworking.Tests
+namespace Kata.SocialNetworking.Tests.Steps
 {
     [Binding]
     public class PostingSteps : UserFeatures

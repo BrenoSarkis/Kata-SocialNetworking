@@ -71,13 +71,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Following.feature</DependentUpon>
     </Compile>
-    <Compile Include="FollowingSteps.cs" />
+    <Compile Include="Steps\FollowingSteps.cs" />
     <Compile Include="Posting.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Posting.feature</DependentUpon>
     </Compile>
-    <Compile Include="PostingSteps.cs" />
+    <Compile Include="Steps\PostingSteps.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserFeatures.cs" />
   </ItemGroup>

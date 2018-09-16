@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using TechTalk.SpecFlow;
 
-namespace Kata.SocialNetworking.Tests
+namespace Kata.SocialNetworking.Tests.Steps
 {
     [Binding]
     public class FollowingSteps : UserFeatures
