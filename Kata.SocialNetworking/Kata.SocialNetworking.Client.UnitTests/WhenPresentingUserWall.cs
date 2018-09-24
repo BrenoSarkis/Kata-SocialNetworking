@@ -78,8 +78,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
             wallPresenter.Handle(aliceFollowedBob);
             wallPresenter.Handle(bobsPost);
 
-            wallPresenter.PrepareWallFor(userName);
-            var alicesWall = wallPresenter.ViewModel.Output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            var alicesWall = EveryMessageOnUsersWall(userName);
 
             Assert.That(alicesWall[0], Is.EqualTo("Alice - A message from Alice (0 seconds ago)"));
             Assert.That(alicesWall[1], Is.EqualTo("Bob - A message from Bob (1 second ago)"));
@@ -94,8 +93,7 @@ namespace Kata.SocialNetworking.Client.UnitTests
             wallPresenter.Handle(aliceFollowedBob);
             wallPresenter.Handle(bobsPost);
 
-            wallPresenter.PrepareWallFor(userName);
-            var alicesWall = wallPresenter.ViewModel.Output.Split(new[] { Environment.NewLine }, StringSplitOptions.None);
+            var alicesWall = EveryMessageOnUsersWall(userName);
 
             Assert.That(alicesWall[0], Is.EqualTo("Bob - A message from Bob (0 seconds ago)"));
         }
@@ -107,8 +105,13 @@ namespace Kata.SocialNetworking.Client.UnitTests
                 wallPresenter.Handle(post);
             }
 
+            return EveryMessageOnUsersWall(userName);
+        }
+
+        private string[] EveryMessageOnUsersWall(string userName)
+        {
             wallPresenter.PrepareWallFor(userName);
-            return wallPresenter.ViewModel.Output.Split(new[] {Environment.NewLine},StringSplitOptions.None);
+            return wallPresenter.ViewModel.Output.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
         }
     }
 }
