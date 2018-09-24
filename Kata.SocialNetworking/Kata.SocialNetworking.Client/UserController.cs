@@ -13,9 +13,6 @@ namespace Kata.SocialNetworking.Client
             this.bus = bus;
         }
 
-        public WallPresenter Presenter { get; set; }
-        public UserViewModel ViewModel { get; } = new UserViewModel();
-
         public void PostMessage(PostMessage postMessage)
         {
             bus.SendCommand(postMessage);
