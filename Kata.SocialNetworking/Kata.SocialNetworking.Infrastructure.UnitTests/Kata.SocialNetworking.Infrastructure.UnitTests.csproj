@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestDoubles\DummyEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WhenPublishingEvents.cs" />
     <Compile Include="WhenSendingCommand.cs" />

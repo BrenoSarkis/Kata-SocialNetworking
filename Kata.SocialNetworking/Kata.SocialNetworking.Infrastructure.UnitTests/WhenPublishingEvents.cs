@@ -1,4 +1,5 @@
 ﻿using Kata.SocialNetworking.Boundaries.Messaging;
+using Kata.SocialNetworking.Infrastructure.UnitTests.TestDoubles;
 using NSubstitute;
 using NUnit.Framework;
 
@@ -22,16 +23,6 @@ namespace Kata.SocialNetworking.Infrastructure.UnitTests
 
             aHandler.Received().Handle(Arg.Is<DummyEvent>(@event => @event.Id == id));
             anotherHandler.Received().Handle(Arg.Is<DummyEvent>(@event => @event.Id == id));
-        }
-    }
-
-    public class DummyEvent : IEvent
-    {
-        public int Id { get; }
-
-        public DummyEvent(int id)
-        {
-            Id = id;
         }
     }
 }
