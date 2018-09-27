@@ -1,6 +1,5 @@
 ﻿using System;
 using Kata.SocialNetworking.Boundaries.Messaging;
-using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.Messages.Post;
 
 namespace Kata.SocialNetworking.Post
