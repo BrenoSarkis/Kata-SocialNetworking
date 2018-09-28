@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="InputTranslator.cs" />
     <Compile Include="IPresentWalls.cs" />
+    <Compile Include="IUserController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserController.cs" />

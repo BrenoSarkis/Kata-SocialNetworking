@@ -23,10 +23,4 @@ namespace Kata.SocialNetworking.Client
             bus.SendCommand(followUser);
         }
     }
-
-    public interface IUserController
-    {
-        void PostMessage(PostMessage postMessage);
-        void FollowUser(FollowUser followUser);
-    }
 }
