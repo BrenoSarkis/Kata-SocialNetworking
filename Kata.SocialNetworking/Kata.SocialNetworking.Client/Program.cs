@@ -11,7 +11,6 @@ namespace Kata.SocialNetworking.Client
 {
     public class Program
     {
-
         public static void Main(string[] args)
         {
             var wallPresenter = new WallPresenter(new Clock(), new UserViewModel());
