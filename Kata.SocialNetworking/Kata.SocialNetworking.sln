@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.Bound
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.DependencyInversion", "Kata.SocialNetworking.DependencyInversion\Kata.SocialNetworking.DependencyInversion.csproj", "{4C0330F3-9766-4FAD-ADB2-3D5FF5D23DA0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata.SocialNetworking.MessageBus", "Kata.SocialNetworking.MessageBus\Kata.SocialNetworking.MessageBus.csproj", "{36145FF3-F9BF-4C7E-A76B-E6CF195CF0E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{4C0330F3-9766-4FAD-ADB2-3D5FF5D23DA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C0330F3-9766-4FAD-ADB2-3D5FF5D23DA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C0330F3-9766-4FAD-ADB2-3D5FF5D23DA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36145FF3-F9BF-4C7E-A76B-E6CF195CF0E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36145FF3-F9BF-4C7E-A76B-E6CF195CF0E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36145FF3-F9BF-4C7E-A76B-E6CF195CF0E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36145FF3-F9BF-4C7E-A76B-E6CF195CF0E3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
