@@ -11,7 +11,7 @@ namespace Kata.SocialNetworking.Client
     public class WallPresenter : IPresentWalls, IHandleMessagesOf<MessagePosted>, IHandleMessagesOf<UserFollowed>
     {
         private readonly IClock clock;
-        private readonly Dictionary<string, List<string>> walls = new Dictionary<string, List<string>>();
+        private readonly Dictionary<string, List<MessagePosted>> walls = new Dictionary<string, List<MessagePosted>>();
         private readonly Dictionary<string, string> followers = new Dictionary<string, string>();
         public UserViewModel ViewModel { get; }
 
@@ -51,28 +51,27 @@ namespace Kata.SocialNetworking.Client
         {
             if (!walls.ContainsKey(userName))
             {
-                walls.Add(userName, new List<string>());
+                walls.Add(userName, new List<MessagePosted>());
             }
         }
 
         public void Handle(MessagePosted messagePosted)
         {
-            var messageToBeAdded = $"{messagePosted.UserName} - {messagePosted.Message} {DefineTimeElapsed(messagePosted.Date)}";
             bool hasNeverBuiltThisUsersWallBefore = !walls.ContainsKey(messagePosted.UserName);
 
             if (hasNeverBuiltThisUsersWallBefore)
             {
-                walls.Add(messagePosted.UserName, new List<string> { messageToBeAdded });
+                walls.Add(messagePosted.UserName, new List<MessagePosted> { messagePosted });
             }
             else
             {
-                walls[messagePosted.UserName].Add(messageToBeAdded);
+                walls[messagePosted.UserName].Add(messagePosted);
             }
         }
 
         private string DefineTimeElapsed(DateTime date)
         {
-            var timeElapsed = (date - clock.Now());
+            var timeElapsed = (date - clock.Now()).Duration();
             var secondsElapsed = timeElapsed.Seconds;
             var minutesElapsed = timeElapsed.Minutes;
 
@@ -89,9 +88,9 @@ namespace Kata.SocialNetworking.Client
             return value != 1 ? "s" : "";
         }
 
-        private string FormatPosts(IEnumerable<string> posts)
+        private string FormatPosts(IEnumerable<MessagePosted> posts)
         {
-            return String.Join(Environment.NewLine, posts);
+            return String.Join(Environment.NewLine, posts.Select(post => $"{post.UserName} - {post.Message} {DefineTimeElapsed(post.Date)}"));
         }
 
         public void Handle(UserFollowed message)
