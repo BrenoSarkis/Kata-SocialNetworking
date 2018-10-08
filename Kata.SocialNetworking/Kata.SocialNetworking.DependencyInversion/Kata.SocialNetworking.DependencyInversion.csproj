@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,7 +44,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DependencyBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Kata.SocialNetworking.Boundaries\Kata.SocialNetworking.Boundaries.csproj">
+      <Project>{79238d74-ae42-4358-9e94-1ff5c06f9d3c}</Project>
+      <Name>Kata.SocialNetworking.Boundaries</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kata.SocialNetworking.Infrastructure\Kata.SocialNetworking.Infrastructure.csproj">
+      <Project>{81a68097-51cf-427f-bd67-544c11235741}</Project>
+      <Name>Kata.SocialNetworking.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kata.SocialNetworking.Messages\Kata.SocialNetworking.Messages.csproj">
+      <Project>{5ab4c73f-7639-4b9f-bfdb-0d0d055e691c}</Project>
+      <Name>Kata.SocialNetworking.Messages</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Kata.SocialNetworking\Kata.SocialNetworking.csproj">
+      <Project>{06683eb8-7205-40d8-b929-2ebfbeeba796}</Project>
+      <Name>Kata.SocialNetworking</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
