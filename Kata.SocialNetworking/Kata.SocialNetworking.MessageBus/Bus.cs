@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Kata.SocialNetworking.Boundaries.Messaging;
 using Kata.SocialNetworking.Infrastructure.Exceptions;
 
-namespace Kata.SocialNetworking.Infrastructure
+namespace Kata.SocialNetworking.MessageBus
 {
     public class Bus : IBus
     {

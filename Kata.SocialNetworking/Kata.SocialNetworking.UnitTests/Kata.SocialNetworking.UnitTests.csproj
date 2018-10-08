@@ -73,6 +73,10 @@
       <Project>{81a68097-51cf-427f-bd67-544c11235741}</Project>
       <Name>Kata.SocialNetworking.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Kata.SocialNetworking.MessageBus\Kata.SocialNetworking.MessageBus.csproj">
+      <Project>{36145FF3-F9BF-4C7E-A76B-E6CF195CF0E3}</Project>
+      <Name>Kata.SocialNetworking.MessageBus</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Kata.SocialNetworking.Messages\Kata.SocialNetworking.Messages.csproj">
       <Project>{5AB4C73F-7639-4B9F-BFDB-0D0D055E691C}</Project>
       <Name>Kata.SocialNetworking.Messages</Name>

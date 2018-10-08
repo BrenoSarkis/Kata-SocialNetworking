@@ -74,6 +74,10 @@
       <Project>{81A68097-51CF-427F-BD67-544C11235741}</Project>
       <Name>Kata.SocialNetworking.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Kata.SocialNetworking.MessageBus\Kata.SocialNetworking.MessageBus.csproj">
+      <Project>{36145FF3-F9BF-4C7E-A76B-E6CF195CF0E3}</Project>
+      <Name>Kata.SocialNetworking.MessageBus</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
