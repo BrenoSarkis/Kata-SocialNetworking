@@ -75,12 +75,8 @@ namespace Kata.SocialNetworking.Client
             var secondsElapsed = timeElapsed.Seconds;
             var minutesElapsed = timeElapsed.Minutes;
 
-            if (minutesElapsed > 0)
-            {
-                return $"({minutesElapsed} minute{FormatTime(minutesElapsed)} ago)";
-            }
-
-            return $"({secondsElapsed} second{FormatTime(secondsElapsed)} ago)";
+            return minutesElapsed > 0 ? $"({minutesElapsed} minute{FormatTime(minutesElapsed)} ago)" 
+                                      : $"({secondsElapsed} second{FormatTime(secondsElapsed)} ago)";
         }
 
         private string FormatTime(int value)
