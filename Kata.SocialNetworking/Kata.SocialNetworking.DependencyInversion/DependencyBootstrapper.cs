@@ -1,6 +1,5 @@
 ﻿using Kata.SocialNetworking.Boundaries.Messaging;
 using Kata.SocialNetworking.Follow;
-using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.MessageBus;
 using Kata.SocialNetworking.Post;
 using Ninject.Modules;
@@ -14,7 +13,7 @@ namespace Kata.SocialNetworking.DependencyInversion
             var bus = new Bus();
             bus.RegisterHandlers(new PostMessageHandler(bus));
             bus.RegisterHandlers(new FollowUserHandler(bus));
-            this.Bind<IBus>().ToConstant(bus);
+            Bind<IBus>().ToConstant(bus);
         }
     }
 }
