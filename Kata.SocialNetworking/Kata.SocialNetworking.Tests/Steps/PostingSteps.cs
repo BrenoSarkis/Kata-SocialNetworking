@@ -1,4 +1,6 @@
-﻿using NUnit.Framework;
+﻿using System;
+using System.Threading;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace Kata.SocialNetworking.Tests.Steps
@@ -11,6 +13,13 @@ namespace Kata.SocialNetworking.Tests.Steps
         {
             InputTranslator.TranslateIntoAction(input);
         }
+
+        [Given(@"I wait for (.*) seconds")]
+        public void GivenIWaitForSeconds(int seconds)
+        {
+            Thread.Sleep(TimeSpan.FromSeconds(seconds));
+        }
+
 
         [When(@"I visit ""(.*)""'s wall")]
         public void WhenIVisitSWall(string input)
