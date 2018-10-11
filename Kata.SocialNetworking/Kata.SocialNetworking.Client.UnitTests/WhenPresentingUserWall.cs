@@ -98,6 +98,27 @@ namespace Kata.SocialNetworking.Client.UnitTests
             Assert.That(alicesWall[0], Is.EqualTo("Bob - A message from Bob (0 seconds ago)"));
         }
 
+
+        [Test]
+        public void ShowsMessagesFromMultipleFollowedUsers()
+        {
+            var aliceFollowedBob = new UserFollowed("Alice", "Bob");
+            var aliceFollowedCharlie = new UserFollowed("Alice", "Charlie");
+
+            var bobsPost = new MessagePosted("Bob", "A message from Bob", fakeClock.HypoteticalNow);
+            var charliePost = new MessagePosted("Charlie", "A message from Charlie", fakeClock.HypoteticalNow);
+
+            wallPresenter.Handle(aliceFollowedBob);
+            wallPresenter.Handle(aliceFollowedCharlie);
+            wallPresenter.Handle(bobsPost);
+            wallPresenter.Handle(charliePost);
+
+            var alicesWall = EveryMessageOnUsersWall(userName);
+
+            Assert.That(alicesWall[0], Is.EqualTo("Bob - A message from Bob (0 seconds ago)"));
+            Assert.That(alicesWall[1], Is.EqualTo("Charlie - A message from Charlie (0 seconds ago)"));
+        }
+
         private string[] GetWallBasedOnPosts(string userName, params MessagePosted[] posts)
         {
             foreach (var post in posts)

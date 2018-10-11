@@ -12,7 +12,7 @@ namespace Kata.SocialNetworking.Client
     {
         private readonly IClock clock;
         private readonly Dictionary<string, List<MessagePosted>> walls = new Dictionary<string, List<MessagePosted>>();
-        private readonly Dictionary<string, string> followers = new Dictionary<string, string>();
+        private readonly Dictionary<string, List<string>> followers = new Dictionary<string, List<string>>();
         public UserViewModel ViewModel { get; }
 
         public WallPresenter(IClock clock, UserViewModel viewModel)
@@ -31,8 +31,7 @@ namespace Kata.SocialNetworking.Client
 
             if (userIsFollowingAnyone)
             {
-                var followedUser = followers[userName];
-                var followedUsersWall = walls[followedUser];
+                var followedUsersWall = GetFollowedUsersWallFor(userName);
                 var currentUsersWall = walls[userName].ToArray();
 
                 var aggregatedMessages = currentUsersWall.Concat(followedUsersWall);
@@ -45,6 +44,16 @@ namespace Kata.SocialNetworking.Client
             }
 
             ViewModel.Output = wall;
+        }
+
+        private IEnumerable<MessagePosted> GetFollowedUsersWallFor(string userName)
+        {
+            var followedUsersWalls = new List<MessagePosted>();
+            foreach (var followedUser in followers[userName])
+            {
+                followedUsersWalls.AddRange(walls[followedUser]);
+            }
+            return followedUsersWalls;
         }
 
         private void IniatializeWall(string userName)
@@ -91,7 +100,17 @@ namespace Kata.SocialNetworking.Client
 
         public void Handle(UserFollowed message)
         {
-            followers.Add(message.SourceUser, message.TargetUser);
+            IniatializeFollowersListOf(message.SourceUser);
+
+            followers[message.SourceUser].Add(message.TargetUser);
+        }
+
+        private void IniatializeFollowersListOf(string userName)
+        {
+            if (!followers.ContainsKey(userName))
+            {
+                followers.Add(userName, new List<string>());
+            }
         }
     }
 }
