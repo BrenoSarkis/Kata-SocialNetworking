@@ -16,6 +16,6 @@ Scenario: Following multiple users
 	Then "Alice"'s wall should display: 
 	| Message                            |
 	| Bob - hello world! (0 seconds ago) |
-	| Charlie - hello! (0 seconds ago    |
+	| Charlie - hello! (0 seconds ago)   |
 	
 	

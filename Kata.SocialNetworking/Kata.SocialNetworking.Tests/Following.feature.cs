@@ -102,7 +102,7 @@ this.ScenarioSetup(scenarioInfo);
             table1.AddRow(new string[] {
                         "Bob - hello world! (0 seconds ago)"});
             table1.AddRow(new string[] {
-                        "Charlie - hello! (0 seconds ago"});
+                        "Charlie - hello! (0 seconds ago)"});
 #line 16
  testRunner.Then("\"Alice\"\'s wall should display:", ((string)(null)), table1, "Then ");
 #line hidden
