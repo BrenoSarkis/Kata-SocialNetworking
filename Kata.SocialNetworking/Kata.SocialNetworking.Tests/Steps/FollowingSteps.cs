@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
 using TechTalk.SpecFlow;
 
 namespace Kata.SocialNetworking.Tests.Steps
@@ -23,6 +24,12 @@ namespace Kata.SocialNetworking.Tests.Steps
         {
             InputTranslator.TranslateIntoAction(userWallInput);
             Assert.That(WallPresenter.ViewModel.Output, Is.EqualTo(wallContent));
+        }
+
+        [Then(@"""(.*)""'s wall should display:")]
+        public void ThenSWallShouldDisplay(string userWallInput, Table wallContentTable)
+        {
+
         }
     }
 }

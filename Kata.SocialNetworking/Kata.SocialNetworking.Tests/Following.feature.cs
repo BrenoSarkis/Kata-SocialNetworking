@@ -96,10 +96,15 @@ this.ScenarioSetup(scenarioInfo);
  testRunner.When("\"Alice\" follows \"Bob\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 15
  testRunner.And("\"Alice\" follows \"Charlie\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Message"});
+            table1.AddRow(new string[] {
+                        "Bob - hello world! (0 seconds ago)"});
+            table1.AddRow(new string[] {
+                        "Charlie - hello! (0 seconds ago"});
 #line 16
- testRunner.Then("\"Alice\"\'s wall should contain: \"Bob - hello world! (0 seconds ago)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 17
- testRunner.And("\"Alice\"\'s wall should contain: \"Charlie - hello! (0 seconds ago)\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Then("\"Alice\"\'s wall should display:", ((string)(null)), table1, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

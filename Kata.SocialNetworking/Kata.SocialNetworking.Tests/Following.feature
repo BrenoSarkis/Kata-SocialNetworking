@@ -13,6 +13,9 @@ Scenario: Following multiple users
 	And User posts message: "Charlie -> hello!"
 	When "Alice" follows "Bob"
 	And "Alice" follows "Charlie"
-	Then "Alice"'s wall should contain: "Bob - hello world! (0 seconds ago)"
-	And "Alice"'s wall should contain: "Charlie - hello! (0 seconds ago)"
+	Then "Alice"'s wall should display: 
+	| Message                            |
+	| Bob - hello world! (0 seconds ago) |
+	| Charlie - hello! (0 seconds ago    |
+	
 	
