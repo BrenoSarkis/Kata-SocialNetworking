@@ -3,7 +3,6 @@
     public interface IPresentWalls
     {
         void PrepareWallFor(string userName);
-
         UserViewModel ViewModel { get; }
     }
 }

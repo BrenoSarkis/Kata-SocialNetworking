@@ -25,7 +25,7 @@ namespace Kata.SocialNetworking.Client
         {
             string wall = "";
 
-            IniatializeWall(userName);
+            SetUpWallFor(userName);
 
             bool userIsFollowingAnyone = followers.ContainsKey(userName);
 
@@ -56,7 +56,7 @@ namespace Kata.SocialNetworking.Client
             return followedUsersWalls;
         }
 
-        private void IniatializeWall(string userName)
+        private void SetUpWallFor(string userName)
         {
             if (!walls.ContainsKey(userName))
             {
