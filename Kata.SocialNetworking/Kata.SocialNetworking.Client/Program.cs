@@ -1,5 +1,4 @@
-﻿using System;
-using Kata.SocialNetworking.Boundaries.Messaging;
+﻿using Kata.SocialNetworking.Boundaries.Messaging;
 using Kata.SocialNetworking.DependencyInversion;
 using Kata.SocialNetworking.Infrastructure.Clock;
 using Kata.SocialNetworking.Messages.Follow;
