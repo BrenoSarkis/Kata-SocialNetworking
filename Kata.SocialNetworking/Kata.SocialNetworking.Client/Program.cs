@@ -20,14 +20,9 @@ namespace Kata.SocialNetworking.Client
 
             bus.RegisterHandlers((IHandleMessagesOf<MessagePosted>)wallPresenter);
             bus.RegisterHandlers((IHandleMessagesOf<UserFollowed>)wallPresenter);
-
-            while (true)
-            {
-                var input = Console.ReadLine();
-                var inputTranslator = new InputTranslator(new UserController(bus), wallPresenter);
-                inputTranslator.TranslateIntoAction(input);
-                Console.Write(wallPresenter.ViewModel.Output); 
-            }
+        
+            var userView = new UserView(wallPresenter, bus);
+            userView.Show();
         }
     }
 }
