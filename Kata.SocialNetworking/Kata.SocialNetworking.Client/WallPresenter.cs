@@ -100,12 +100,12 @@ namespace Kata.SocialNetworking.Client
 
         public void Handle(UserFollowed message)
         {
-            IniatializeFollowersListOf(message.SourceUser);
+            SetUpFollowersFor(message.SourceUser);
 
             followers[message.SourceUser].Add(message.TargetUser);
         }
 
-        private void IniatializeFollowersListOf(string userName)
+        private void SetUpFollowersFor(string userName)
         {
             if (!followers.ContainsKey(userName))
             {
