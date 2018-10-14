@@ -1,6 +1,5 @@
 ﻿using Kata.SocialNetworking.Boundaries.Messaging;
 using Kata.SocialNetworking.Follow;
-using Kata.SocialNetworking.Infrastructure;
 using Kata.SocialNetworking.MessageBus;
 using Kata.SocialNetworking.Messages.Follow;
 using NSubstitute;
