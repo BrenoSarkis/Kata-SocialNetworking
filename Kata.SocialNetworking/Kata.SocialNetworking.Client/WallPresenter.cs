@@ -49,10 +49,12 @@ namespace Kata.SocialNetworking.Client
         private IEnumerable<MessagePosted> GetFollowedUsersWallFor(string userName)
         {
             var followedUsersWalls = new List<MessagePosted>();
+
             foreach (var followedUser in followers[userName])
             {
                 followedUsersWalls.AddRange(walls[followedUser]);
             }
+
             return followedUsersWalls;
         }
 
