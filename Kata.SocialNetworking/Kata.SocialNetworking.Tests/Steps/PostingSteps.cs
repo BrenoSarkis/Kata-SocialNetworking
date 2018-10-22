@@ -20,7 +20,6 @@ namespace Kata.SocialNetworking.Tests.Steps
             Thread.Sleep(TimeSpan.FromSeconds(seconds));
         }
 
-
         [When(@"I visit ""(.*)""'s wall")]
         public void WhenIVisitSWall(string input)
         {
